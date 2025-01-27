@@ -3,18 +3,18 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <title>Blog Title</title>
   <subtitle>This is a longer description about your blog.</subtitle>
-  <link href="https://example.com/eleventy-base-blog/feed/feed.xml" rel="self" />
-  <link href="https://example.com/eleventy-base-blog/" />
+  <link href="https://example.com/fontra-blog/feed/feed.xml" rel="self" />
+  <link href="https://example.com/fontra-blog/" />
   <updated>2025-01-27T00:00:00Z</updated>
-  <id>https://example.com/eleventy-base-blog/</id>
+  <id>https://example.com/fontra-blog/</id>
   <author>
     <name>Your Name</name>
   </author>
   <entry>
     <title>Welcome to the Fontra blog!</title>
-    <link href="https://example.com/eleventy-base-blog/blog/introduction/" />
+    <link href="https://example.com/fontra-blog/blog/introduction/" />
     <updated>2025-01-27T00:00:00Z</updated>
-    <id>https://example.com/eleventy-base-blog/blog/introduction/</id>
+    <id>https://example.com/fontra-blog/blog/introduction/</id>
     <content type="html">&lt;p&gt;Intro about this blog and Fontra.&lt;/p&gt;
 &lt;p&gt;A paragraph of text.&lt;/p&gt;
 &lt;h2 id=&quot;a-section-header&quot;&gt;A Section Header&lt;/h2&gt;
