@@ -63,11 +63,11 @@ export default async function(eleventyConfig) {
 		},
 		metadata: {
 			language: "en",
-			title: "Blog Title",
-			subtitle: "This is a longer description about your blog.",
-			base: "https://example.com/",
+			title: "Fontra Blog",
+			subtitle: "Posting about Fontra development.",
+			base: "https://fontra.xyz/",
 			author: {
-				name: "Your Name"
+				name: "Fontra Team"
 			}
 		}
 	});
