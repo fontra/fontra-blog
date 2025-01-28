@@ -1,8 +1,30 @@
 # Fontra Blog
 
-This is based on the [Eleventy Base BLog](https://github.com/11ty/eleventy-base-blog).
+This is based on the [Eleventy Base Blog](https://github.com/11ty/eleventy-base-blog).
 
-The original README follows.
+Blog posts live in the `content/blog/` folder. A blog post is either:
+
+- A single `*.md` file, where the file name (without extension) is the post's slug
+- A folder containing a `*.md` file. The folder name and the `*.md` file name (without extension) should match.
+
+The first few lines of the `*.md` should look like this:
+
+```md
+---
+title: The title of the post
+description: A slightly longer description of the post
+date: 2025-01-27
+tags: ["a tag", "another tag", "any number of tags"]
+---
+```
+
+After that the post's content follows, in MarkDown format. If it is a simple text post, a single `*.md` file is enough. If you want to add images, it is better if the post is a folder, then the images can be in the same folder. Images can be references with inline HTML:
+
+```html
+<img src="./example.png" alt="Some alt text">
+```
+
+The original Eleventy Base Blog README follows below this line.
 
 # eleventy-base-blog v9
 
