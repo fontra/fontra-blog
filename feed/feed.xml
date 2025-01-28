@@ -3,18 +3,18 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <title>Fontra Blog</title>
   <subtitle>Posting about Fontra development.</subtitle>
-  <link href="https://fontra.xyz/feed/feed.xml" rel="self" />
-  <link href="https://fontra.xyz/" />
+  <link href="https://blog.fontra.xyz/feed/feed.xml" rel="self" />
+  <link href="https://blog.fontra.xyz/" />
   <updated>2025-01-27T00:00:00Z</updated>
-  <id>https://fontra.xyz/</id>
+  <id>https://blog.fontra.xyz/</id>
   <author>
     <name>Fontra Team</name>
   </author>
   <entry>
     <title>Welcome to the Fontra blog!</title>
-    <link href="https://fontra.xyz/blog/introduction/" />
+    <link href="https://blog.fontra.xyz/blog/introduction/" />
     <updated>2025-01-27T00:00:00Z</updated>
-    <id>https://fontra.xyz/blog/introduction/</id>
+    <id>https://blog.fontra.xyz/blog/introduction/</id>
     <content type="html">&lt;p&gt;Intro about this blog and Fontra.&lt;/p&gt;
 &lt;p&gt;A paragraph of text.&lt;/p&gt;
 &lt;h3 id=&quot;a-section-header&quot;&gt;A Section Header&lt;/h3&gt;
