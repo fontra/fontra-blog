@@ -17,7 +17,7 @@
     <id>https://fontra.xyz/blog/introduction/</id>
     <content type="html">&lt;p&gt;Intro about this blog and Fontra.&lt;/p&gt;
 &lt;p&gt;A paragraph of text.&lt;/p&gt;
-&lt;h2 id=&quot;a-section-header&quot;&gt;A Section Header&lt;/h2&gt;
+&lt;h3 id=&quot;a-section-header&quot;&gt;A Section Header&lt;/h3&gt;
 &lt;p&gt;Where we would write about more items.&lt;/p&gt;
 </content>
   </entry>

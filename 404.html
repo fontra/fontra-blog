@@ -12,6 +12,7 @@
 :root {
 	--font-family: InriaSans, system-ui, sans-serif;
 	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+	--inria-bold: 650;
 }
 
 /* Theme colors */
@@ -49,30 +50,16 @@
 
 @font-face {
   font-family: "InriaSans";
-  src: url("/fonts/InriaSans-Regular.woff2") format("woff2");
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "InriaSans";
-  src: url("/fonts/InriaSans-ExtraBold.woff2") format("woff2");
-  font-weight: 700;
+  src: url("/fonts/InriaSans-VF.woff2") format("woff2");
+  font-weight: 300 800;
 }
 
 @font-face {
 	font-family: "InriaSans";
-	src: url("/fonts/InriaSans-Italic.woff2") format("woff2");
-	font-weight: 400;
+	src: url("/fonts/InriaSansItalic-VF.woff2") format("woff2");
+	font-weight: 300 800;
 	font-style: italic;
 }
-
-@font-face {
-	font-family: "InriaSans";
-	src: url("/fonts/InriaSans-ExtraBoldItalic.woff2") format("woff2");
-	font-weight: 700;
-	font-style: italic;
-}
-
 
 /* Global stylesheet */
 * {
@@ -226,7 +213,7 @@ header {
 }
 .home-link {
 	font-size: 1em; /* 16px /16 */
-	font-weight: 700;
+	font-weight: var(--inria-bold);
 	margin-right: 2em;
 }
 .home-link:link:not(:hover) {
@@ -282,7 +269,7 @@ header {
 }
 .postlist-link {
 	font-size: 1.1875em; /* 19px /16 */
-	font-weight: 700;
+	font-weight: var(--inria-bold);
 	flex-basis: calc(100% - 1.5rem);
 	padding-left: .25em;
 	padding-right: .5em;
@@ -291,7 +278,7 @@ header {
 	text-decoration-thickness: 1px;
 }
 .postlist-item-active .postlist-link {
-	font-weight: bold;
+	font-weight: var(--inria-bold);
 }
 
 /* Tags */
@@ -317,6 +304,15 @@ header {
 }
 .post-metadata time {
 	margin-right: 1em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--inria-bold);
 }</style>
 	</head>
 	<body>
@@ -359,7 +355,7 @@ This will work for both GitHub pages and Netlify:
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
 		</footer>
 
-		<!-- This page `/404.html` was built on 2025-01-28T14:09:37.275Z -->
+		<!-- This page `/404.html` was built on 2025-01-28T15:14:44.249Z -->
 		<script type="module" src="/dist/PQuipxb2GV.js"></script>
 	</body>
 </html>
