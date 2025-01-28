@@ -65,7 +65,7 @@ export default async function(eleventyConfig) {
 			language: "en",
 			title: "Fontra Blog",
 			subtitle: "Posting about Fontra development.",
-			base: "https://fontra.xyz/",
+			base: "https://blog.fontra.xyz/",
 			author: {
 				name: "Fontra Team"
 			}
