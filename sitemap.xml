@@ -2,32 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 	
 	<url>
-		<loc>https://blog.fontra.xyz/fontra-blog/blog/introduction/</loc>
+		<loc>https://blog.fontra.xyz/blog/introduction/</loc>
 		<lastmod>2025-01-27</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://blog.fontra.xyz/fontra-blog/about/</loc>
-		<lastmod>2025-01-27</lastmod>
+		<loc>https://blog.fontra.xyz/about/</loc>
+		<lastmod>2025-01-28</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://blog.fontra.xyz/fontra-blog/blog/</loc>
-		<lastmod>2025-01-27</lastmod>
+		<loc>https://blog.fontra.xyz/blog/</loc>
+		<lastmod>2025-01-28</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://blog.fontra.xyz/fontra-blog/</loc>
-		<lastmod>2025-01-27</lastmod>
+		<loc>https://blog.fontra.xyz/</loc>
+		<lastmod>2025-01-28</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://blog.fontra.xyz/fontra-blog/tags/</loc>
-		<lastmod>2025-01-27</lastmod>
+		<loc>https://blog.fontra.xyz/tags/</loc>
+		<lastmod>2025-01-28</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://blog.fontra.xyz/fontra-blog/feed/feed.xml</loc>
-		<lastmod>2025-01-27</lastmod>
+		<loc>https://blog.fontra.xyz/feed/feed.xml</loc>
+		<lastmod>2025-01-28</lastmod>
 	</url>
 </urlset>
