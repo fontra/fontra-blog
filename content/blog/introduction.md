@@ -1,6 +1,6 @@
 ---
-title: Welcome to the Fontra blog!
-description: A brief history of the project so far
+title: Welcome to the Fontra blog! A brief history of the project.
+description: A brief history of the project
 date: 2025-01-29
 tags: fontra
 ---
