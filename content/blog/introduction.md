@@ -1,6 +1,6 @@
 ---
 title: Welcome to the Fontra blog!
-description: The very first blog post from the Fontra team
+description: A brief history of the project so far
 date: 2025-01-29
 tags: fontra
 ---
