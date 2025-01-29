@@ -10,9 +10,9 @@ We have come a long way, and it has been quite the trip already. The first commi
 
 Fontra started as a proof of concept. We needed fast live interpolation of (deeply) nested variable components, good support for large character sets (tens of thousands glyphs), and low friction collaboration within a medium-sized (up to 15 designers simultaneously) team. These requirements were informed by ongoing custom CJK (Chinese, Japanese, Korean) type-designs at Black Foundry. We needed new tools for this, and we considered these three options:
 
-A new extension for RoboFont (a faster successor to our RoboCJK extension)
-A new cross-platform desktop application (using Qt or wxWidgets)
-A web application + custom server
+- A new extension for RoboFont (a faster successor to our RoboCJK extension)
+- A new cross-platform desktop application (using Qt or wxWidgets)
+- A web application + custom server
 
 We were already using a server with a SQL database to enable smooth collaboration of the team on large scale (CJK) projects), coupled with a RoboFont extension for glyph editing.
 A cross-platform solution was to be preferred, and indeed web-browsers are by definition cross-platform, why not build on top of that!
