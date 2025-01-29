@@ -512,9 +512,11 @@ h6 {
 <p>It was long overdue, but here it is – a blog dedicated to Fontra. We will write about new features, work in progress, and future plans. But first: let's recap what happened previously, and summarize the current state of Fontra.</p>
 <p>We have come a long way, and it has been quite the trip already. The first commit to git was done on 14 November 2021. The initial name for the project was &quot;Trafo&quot;, but on the second day everything got renamed to &quot;Fontra&quot;, after our colleague Fabio Caccamo suggested it.</p>
 <p>Fontra started as a proof of concept. We needed fast live interpolation of (deeply) nested variable components, good support for large character sets (tens of thousands glyphs), and low friction collaboration within a medium-sized (up to 15 designers simultaneously) team. These requirements were informed by ongoing custom CJK (Chinese, Japanese, Korean) type-designs at Black Foundry. We needed new tools for this, and we considered these three options:</p>
-<p>A new extension for RoboFont (a faster successor to our RoboCJK extension)
-A new cross-platform desktop application (using Qt or wxWidgets)
-A web application + custom server</p>
+<ul>
+<li>A new extension for RoboFont (a faster successor to our RoboCJK extension)</li>
+<li>A new cross-platform desktop application (using Qt or wxWidgets)</li>
+<li>A web application + custom server</li>
+</ul>
 <p>We were already using a server with a SQL database to enable smooth collaboration of the team on large scale (CJK) projects), coupled with a RoboFont extension for glyph editing.
 A cross-platform solution was to be preferred, and indeed web-browsers are by definition cross-platform, why not build on top of that!</p>
 <p>OpenType 1.8 (2016) brought the Variable Font format to the real world, and type-designers had been drawing with several masters (or sources) for a while already: it seemed important to us that the font editor would take these multiple-masters considerations from its very foundations. In other words: we envisioned a  &quot;variable first&quot; approach to font editing.</p>
@@ -555,7 +557,7 @@ A cross-platform solution was to be preferred, and indeed web-browsers are by de
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/introduction/` was built on 2025-01-29T10:24:14.765Z -->
+		<!-- This page `/blog/introduction/` was built on 2025-01-29T13:10:51.505Z -->
 		<script type="module" src="/dist/PQuipxb2GV.js"></script>
 	</body>
 </html>

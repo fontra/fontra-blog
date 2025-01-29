@@ -18,9 +18,11 @@
     <content type="html">&lt;p&gt;It was long overdue, but here it is – a blog dedicated to Fontra. We will write about new features, work in progress, and future plans. But first: let&#39;s recap what happened previously, and summarize the current state of Fontra.&lt;/p&gt;
 &lt;p&gt;We have come a long way, and it has been quite the trip already. The first commit to git was done on 14 November 2021. The initial name for the project was &amp;quot;Trafo&amp;quot;, but on the second day everything got renamed to &amp;quot;Fontra&amp;quot;, after our colleague Fabio Caccamo suggested it.&lt;/p&gt;
 &lt;p&gt;Fontra started as a proof of concept. We needed fast live interpolation of (deeply) nested variable components, good support for large character sets (tens of thousands glyphs), and low friction collaboration within a medium-sized (up to 15 designers simultaneously) team. These requirements were informed by ongoing custom CJK (Chinese, Japanese, Korean) type-designs at Black Foundry. We needed new tools for this, and we considered these three options:&lt;/p&gt;
-&lt;p&gt;A new extension for RoboFont (a faster successor to our RoboCJK extension)
-A new cross-platform desktop application (using Qt or wxWidgets)
-A web application + custom server&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A new extension for RoboFont (a faster successor to our RoboCJK extension)&lt;/li&gt;
+&lt;li&gt;A new cross-platform desktop application (using Qt or wxWidgets)&lt;/li&gt;
+&lt;li&gt;A web application + custom server&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;We were already using a server with a SQL database to enable smooth collaboration of the team on large scale (CJK) projects), coupled with a RoboFont extension for glyph editing.
 A cross-platform solution was to be preferred, and indeed web-browsers are by definition cross-platform, why not build on top of that!&lt;/p&gt;
 &lt;p&gt;OpenType 1.8 (2016) brought the Variable Font format to the real world, and type-designers had been drawing with several masters (or sources) for a while already: it seemed important to us that the font editor would take these multiple-masters considerations from its very foundations. In other words: we envisioned a  &amp;quot;variable first&amp;quot; approach to font editing.&lt;/p&gt;
