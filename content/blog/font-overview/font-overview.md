@@ -3,7 +3,6 @@ title: Fontra news for January – Font Overview
 description: Fontra news for January, new features and updates
 date: 2025-01-30
 tags: fontra
-draft: true
 ---
 This month's big news is that we finally have a font overview. 
 
