@@ -5,11 +5,76 @@
   <subtitle>Posting about Fontra development.</subtitle>
   <link href="https://blog.fontra.xyz/feed/feed.xml" rel="self" />
   <link href="https://blog.fontra.xyz/" />
-  <updated>2025-01-29T00:00:00Z</updated>
+  <updated>2025-01-30T00:00:00Z</updated>
   <id>https://blog.fontra.xyz/</id>
   <author>
     <name>Fontra Team</name>
   </author>
+  <entry>
+    <title>Fontra news for January – Font Overview</title>
+    <link href="https://blog.fontra.xyz/blog/font-overview/" />
+    <updated>2025-01-30T00:00:00Z</updated>
+    <id>https://blog.fontra.xyz/blog/font-overview/</id>
+    <content type="html">&lt;p&gt;This month&#39;s big news is that we finally have a font overview.&lt;/p&gt;
+&lt;p&gt;We fixed many bugs and implemented many small improvements. The full human-curated list of changes can be found &lt;a href=&quot;https://fontra.xyz/changelog.html&quot;&gt;here&lt;/a&gt;, Even more details can be found on &lt;a href=&quot;https://github.com/googlefonts/fontra&quot;&gt;our main GitHub repository&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;font-overview&quot;&gt;Font overview&lt;/h3&gt;
+&lt;p&gt;A font overview is an essential component for a font editor, especially when it comes to designing a full Latin typeface of any other script that has a relatively small number of glyphs (say less than 5000).&lt;/p&gt;
+&lt;p&gt;Fontra’s development was initially guided by Black Foundry’s needs for big CJK projects, in which character sets are managed separately. A font overview wasn’t an immediate priority. But now that we have achieved most of the essential parts for CJK font design, we are able to move forward and improve Fontra for broader font development.&lt;/p&gt;
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://blog.fontra.xyz/blog/font-overview/8otm50hGBH-2608.avif 2608w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://blog.fontra.xyz/blog/font-overview/8otm50hGBH-2608.webp 2608w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://blog.fontra.xyz/blog/font-overview/8otm50hGBH-2608.png&quot; alt=&quot;Screenshot of Fontra&#39;s Font Overview&quot; width=&quot;2608&quot; height=&quot;1754&quot;&gt;&lt;/picture&gt;
+&lt;p&gt;When opening or creating a font with Fontra, the default view is now the font overview. Double-clicking glyphs in the overview leads the user to an editor view.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Pro tip: one can open multiple tabs or windows for the same font, by copying the URL into a new tab or window. It is possible to have multiple font overviews or glyph editors open for the same font.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The left sidebar contains several user interface elements to help viewing the glyphs in the font in an organized way. For example, one can group the glyphs by script. The sections in the overview are collapsable. Alt-click on a section header collapses all sections. Or expands all, if all are collapsed.&lt;/p&gt;
+&lt;p&gt;Glyph &lt;em&gt;filtering&lt;/em&gt; is still somewhat limited: while you can quickly filter by glyph name in the search box, we anticipate additional filtering options in the future. We notice that early adopters are enthusiastically proposing additional features.&lt;/p&gt;
+&lt;p&gt;The documentation for the font overview &lt;a href=&quot;https://docs.fontra.xyz/reference/font-overview/workspace/&quot;&gt;is being written&lt;/a&gt;, and will be enhanced.&lt;/p&gt;
+&lt;p&gt;In general, the options provide a &amp;quot;view&amp;quot; on the font&#39;s collection of glyphs. Changing the options does not change anything about the font itself, just &lt;em&gt;how we look at it&lt;/em&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;glyph-sets&quot;&gt;Glyph sets&lt;/h3&gt;
+&lt;p&gt;A &amp;quot;Glyph set&amp;quot; is a collection of glyphs, which is &lt;em&gt;independent&lt;/em&gt; from the glyphs that are defined in the font. A glyph can be defined in the glyph set, but not in the font or vice versa. Glyphs in the set that do not exist in the font are represented as &amp;quot;placeholder&amp;quot; glyphs in overview, showing a generic character in gray if the code point exists.&lt;/p&gt;
+&lt;p&gt;In the left sidebar, there are two sections about glyph sets:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;quot;Project glyph sets&amp;quot;: belong to the font, and are stored with the font data.&lt;/li&gt;
+&lt;li&gt;&amp;quot;My glyph sets&amp;quot;: belong to the user, and are stored locally in the browser.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The &amp;quot;Project glyph sets&amp;quot; contains one special glyph set &amp;quot;This font&#39;s glyphs&amp;quot;, that represents the glyphs that exist in the font, and nothing more.&lt;/p&gt;
+&lt;p&gt;Selecting multiple glyph sets shows the &lt;em&gt;superset&lt;/em&gt; of all selected sets.&lt;/p&gt;
+&lt;p&gt;Glyphs sets are stored purely by references to online resources. A glyph set can reference any publicly visible text file containing glyph names, or a TSV/CSV file, containing code point and/or glyph name columns. Links to Google Docs or Google Sheets are internally converted to .txt or .csv download links, respectively.&lt;/p&gt;
+&lt;p&gt;We are considering supporting uploading of local files in the future, but for now consider this a pilot, where we encourage people strongly to use (and create) online glyph set resources.&lt;/p&gt;
+&lt;p&gt;The currently bundled preset glyph sets collections are from Google Fonts, Black Foundry, Adobe and Christoph Koeberlin. We are &lt;a href=&quot;https://github.com/googlefonts/fontra/discussions/1943&quot;&gt;open to suggestions&lt;/a&gt; for more preset glyph sets.&lt;/p&gt;
+&lt;p&gt;To add one or more glyph sets to either section, use the &amp;quot;+&amp;quot; button. This leads to a dialog where you can either activate any of the preset glyph sets, or add a custom glyph set.&lt;/p&gt;
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://blog.fontra.xyz/blog/font-overview/rYFmRkAxDQ-1896.avif 1896w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://blog.fontra.xyz/blog/font-overview/rYFmRkAxDQ-1896.webp 1896w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://blog.fontra.xyz/blog/font-overview/rYFmRkAxDQ-1896.png&quot; alt=&quot;Screenshot of the Fontra Add/remove preset glyph sets dialog&quot; width=&quot;1896&quot; height=&quot;1280&quot;&gt;&lt;/picture&gt;
+&lt;h3 id=&quot;custom-glyph-sets&quot;&gt;Custom glyph sets&lt;/h3&gt;
+&lt;p&gt;To create a custom glyph set, click the &amp;quot;Add custom glyph set&amp;quot; button in the above dialog. This leads to a different dialog, where the user can specify the parameters for a custom glyph set.&lt;/p&gt;
+&lt;p&gt;We currently support two formats:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A text file containing white-space separated glyph names
+&lt;ul&gt;
+&lt;li&gt;Code points are inferred from the glyph name&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;A tab-, comma-, or semicolon-separated text file (.tsv or .csv) with at least one column
+&lt;ul&gt;
+&lt;li&gt;Optionally a header row: the first non-empty, non-comment row&lt;/li&gt;
+&lt;li&gt;A column can be specified by header cell or by zero-based column index&lt;/li&gt;
+&lt;li&gt;The code point column can contain decimal or hexadecimal code points.&lt;/li&gt;
+&lt;li&gt;Hexadecimal code points may be prefixed by &lt;code&gt;0x&lt;/code&gt; or &lt;code&gt;U+&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;If there is no code point, a code point will be inferred from the glyph name&lt;/li&gt;
+&lt;li&gt;If there is no glyph name, a glyph name will be inferred from the code point&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Additional info for both formats:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;For now, code point and glyph name &amp;quot;guessing&amp;quot; is done according to the Glyphs app naming convention, and will additionally parse &lt;code&gt;uni1234&lt;/code&gt;-style and &lt;code&gt;u12345&lt;/code&gt;-style names.&lt;/li&gt;
+&lt;li&gt;Both formats support an optional comment character for comment-until-the-end-of-the-line-style comments.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;font-overview-further-development&quot;&gt;Font overview further development&lt;/h3&gt;
+&lt;p&gt;In the future, it will be possible to copy/paste glyphs in the font overview, as well as to create and delete glyphs.&lt;/p&gt;
+&lt;h3 id=&quot;serverless-fontra&quot;&gt;Serverless Fontra&lt;/h3&gt;
+&lt;p&gt;In other news, Simon Cozens is experimenting with a so called &amp;quot;serverless&amp;quot; version of Fontra, that runs entirely in the browser. This is leading to some refactoring of our frontend code, that will be generally beneficial to the project. It makes some of Fontra&#39;s &lt;em&gt;intended&lt;/em&gt; modularity more &lt;em&gt;practically&lt;/em&gt; modular.&lt;/p&gt;
+&lt;p&gt;We are very excited by these new possibilities, and we would like to point out that this &lt;em&gt;diversifies&lt;/em&gt; Fontra&#39;s deployment options even more. It is not intended as a replacement of Fontra&#39;s already varied set of deployment options. As a quick reminder: There is Fontra Pak (our desktop application), but Fontra can also be run from the command line in a Terminal program. Additionally we have an SQL-based shared storage solution. A new collaborative Fontra server is under construction. Fontra truly is a multi-headed beast, in all the good senses!&lt;/p&gt;
+&lt;h3 id=&quot;other-ongoing-work&quot;&gt;Other ongoing work&lt;/h3&gt;
+&lt;p&gt;While we can read .glyphs and .glyphspackage data, so far we weren&#39;t able to write these formats. We are working to implement that, so people can edit .glyphs and .glyphspackage files directly with Fontra, without the need for conversion.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Welcome to the Fontra blog! A brief history of the project.</title>
     <link href="https://blog.fontra.xyz/blog/introduction/" />
