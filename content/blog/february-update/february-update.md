@@ -19,8 +19,22 @@ The last day of the symposium was dedicated to a series of demos. We got to do a
 
 https://www.youtube.com/watch?v=yiupIidTw4I
 
-### Fontra updates
+### Updates
 
 The font sources panel got a redesign: the old design was too hard to extend. The first thing that was added was settings for global guidelines. Previously, Fontra only supported per-glyph guidelines, but with this new feature we added support for global guidelines.
 
-Additionally, many smaller bugs and user experience issues were fixed. For a complete list, please have a look at the [list of recent changes](https://fontra.xyz/changelog.html).
+In addition to .ttf and .otf, Fontra can now read the .woff and .woff2 formats, for convenient inspection of such font files.
+
+Many smaller bugs and user experience issues were fixed. For a complete list, please have a look at the [list of recent changes](https://fontra.xyz/changelog.html).
+
+### Work In Progress
+
+There was a lot of development in several work-in-progress features.
+
+We are working on making Fontra able to edit .glyphs and .glyphpackage files. This is a multi-stage project, where we initially focus on editing glyph-level data: outlines and (variable/smart) components. This work is nearly completed, and we expect it to land next week.
+
+Background layers (or "scratch" layers) is a much-requested feature, which is developing nicely, and is expected to land soon, too.
+
+Work is being done to expose more advanced font info data, such as various lower level line metrics data and other font-level info, so users can control these fields when exporting to .ttf or .otf. This set of features was also an important motivation for the redesign of the font sources panel.
+
+As mentioned last month, Simon Cozens is working on changes to the front-end code to make a server-less version of Fontra possible. It includes setting up a "bundler" (webpack in our case), and makes a much clearer separation between our server code and the front-end code and assets. This work is nearing completion and will be merged very soon. It is a tricky operation as it moves and touches a _lot_ of files, and this can get in the way of other work-in-progress if we're not careful.
