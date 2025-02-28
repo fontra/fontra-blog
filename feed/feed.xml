@@ -5,11 +5,36 @@
   <subtitle>Posting about Fontra development.</subtitle>
   <link href="https://blog.fontra.xyz/feed/feed.xml" rel="self" />
   <link href="https://blog.fontra.xyz/" />
-  <updated>2025-01-30T00:00:00Z</updated>
+  <updated>2025-02-28T00:00:00Z</updated>
   <id>https://blog.fontra.xyz/</id>
   <author>
     <name>Fontra Team</name>
   </author>
+  <entry>
+    <title>Fontra news for February</title>
+    <link href="https://blog.fontra.xyz/blog/february-update/" />
+    <updated>2025-02-28T00:00:00Z</updated>
+    <id>https://blog.fontra.xyz/blog/february-update/</id>
+    <content type="html">&lt;p&gt;This month, Jérémie, Gaëtan and Just took a trip to Nancy (France), to participate in the &lt;a href=&quot;https://automatic-type-design.anrt-nancy.fr/colloques/automatic-type-design-3&quot;&gt;Automatic Type Design symposium&lt;/a&gt; organized by &lt;a href=&quot;https://anrt-nancy.fr/en&quot;&gt;ANRT&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We led two one-day Fontra workshops, each with about 20 participants, using our internal collaborative Fontra server. The participants were a mix of international students and professionals, with very diverse backgrounds. They got to learn the basics of creating variable fonts with Fontra, while working collaborative in small groups. We especially encouraged them to use variable components.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Some experimental letterforms created in Fontra, by a group of workshop participants:&lt;/em&gt;
+&lt;picture&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://blog.fontra.xyz/blog/february-update/ARWytyJKYV-800.webp 800w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://blog.fontra.xyz/blog/february-update/ARWytyJKYV-800.gif&quot; alt=&quot;Screen recording of moving letterforms&quot; width=&quot;800&quot; height=&quot;672&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;The following two days were packed with very inspriring talks. Several talks focussed on algorithmic type design, and/or experimental approaches to drawing digital letters.&lt;/p&gt;
+&lt;p&gt;The last day of the symposium was dedicated to a series of demos. We got to do a compact Fontra demo, where we talked about the ideas behind Fontra, and showcased the core set of features. We were happy to answer some good questions from the audience.&lt;/p&gt;
+&lt;div id=&quot;yiupIidTw4I&quot; class=&quot;eleventy-plugin-youtube-embed&quot; style=&quot;position:relative;width:100%;padding-top: 56.25%;&quot;&gt;&lt;iframe style=&quot;position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;&quot; width=&quot;100%&quot; height=&quot;100%&quot; frameborder=&quot;0&quot; title=&quot;Embedded YouTube video&quot; src=&quot;https://www.youtube-nocookie.com/embed/yiupIidTw4I&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
+&lt;h3 id=&quot;updates&quot;&gt;Updates&lt;/h3&gt;
+&lt;p&gt;We added initial support for global guidelines. Previously, Fontra only supported per-glyph guidelines. If set up consistently, global guidelines can interpolate across the font&#39;s designspace, just like glyph-level guidelines.&lt;/p&gt;
+&lt;p&gt;The font sources panel got a redesign: the old design was too hard to extend. This was partially motivated by the new global guidelines feature.&lt;/p&gt;
+&lt;p&gt;In addition to .ttf and .otf, Fontra can now read the .woff and .woff2 formats, for convenient inspection of such font files, or for conversion to an editable format.&lt;/p&gt;
+&lt;p&gt;Many smaller bugs and user-experience issues were fixed. For a complete list, please have a look at the &lt;a href=&quot;https://fontra.xyz/changelog.html&quot;&gt;list of recent changes&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;work-in-progress&quot;&gt;Work In Progress&lt;/h3&gt;
+&lt;p&gt;There was a lot of development in several work-in-progress features.&lt;/p&gt;
+&lt;p&gt;We are working on making Fontra able to edit .glyphs and .glyphpackage files. This is a multi-stage project, where we initially focus on editing glyph-level data: outlines and (variable/smart) components. This work is nearly completed, and we expect it to land next week.&lt;/p&gt;
+&lt;p&gt;Background layers (or &lt;em&gt;scratch/sketch&lt;/em&gt; layers) is a much-requested feature, which is developing nicely, and is expected to land soon, too.&lt;/p&gt;
+&lt;p&gt;Work is being done to expose more advanced font info data, such as various lower level line metrics data and other font-level info, so users can control these fields when exporting to .ttf or .otf. This set of features was also an important motivation for the redesign of the font sources panel.&lt;/p&gt;
+&lt;p&gt;As mentioned last month, Simon Cozens is working on changes to the front-end code to make a server-less version of Fontra possible. It includes setting up a &lt;em&gt;bundler&lt;/em&gt; (webpack in our case), and makes a much clearer separation between our server code and the front-end code and assets. This work is nearing completion and will be merged very soon. It is a tricky operation as it moves and touches a &lt;em&gt;lot&lt;/em&gt; of files, and this can get in the way of other work-in-progress if we&#39;re not careful.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Fontra news for January – Font Overview</title>
     <link href="https://blog.fontra.xyz/blog/font-overview/" />
