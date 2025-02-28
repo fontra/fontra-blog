@@ -33,7 +33,7 @@ There was a lot of development in several work-in-progress features.
 
 We are working on making Fontra able to edit .glyphs and .glyphpackage files. This is a multi-stage project, where we initially focus on editing glyph-level data: outlines and (variable/smart) components. This work is nearly completed, and we expect it to land next week.
 
-Background layers (or "scratch" layers) is a much-requested feature, which is developing nicely, and is expected to land soon, too.
+Background layers (or _scratch/sketch_ layers) is a much-requested feature, which is developing nicely, and is expected to land soon, too.
 
 Work is being done to expose more advanced font info data, such as various lower level line metrics data and other font-level info, so users can control these fields when exporting to .ttf or .otf. This set of features was also an important motivation for the redesign of the font sources panel.
 
