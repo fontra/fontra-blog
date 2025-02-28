@@ -3,7 +3,6 @@ title: Fontra news for February
 description: Fontra news for February, new features, bug fixes and ANRT Automatic Type Design symposium
 date: 2025-02-28
 tags: fontra
-draft: true
 ---
 This month, Jérémie, Gaëtan and Just took a trip to Nancy (France), to participate in the [Automatic Type Design symposium](https://automatic-type-design.anrt-nancy.fr/colloques/automatic-type-design-3) organized by [ANRT](https://anrt-nancy.fr/en).
 
