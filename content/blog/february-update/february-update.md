@@ -9,7 +9,7 @@ This month, Jérémie, Gaëtan and Just took a trip to Nancy (France), to partic
 
 We led two one-day Fontra workshops, each with about 20 participants, using our internal collaborative Fontra server. The participants were a mix of international students and professionals, with very diverse backgrounds. They got to learn the basics of creating variable fonts with Fontra, while working collaborative in small groups. We especially encouraged them to use variable components.
 
-_Some experimental letterforms created by a group of workshop participants:_
+_Some experimental letterforms created in Fontra, by a group of workshop participants:_
 <img src="./workshopfontra.gif" alt="Screen recording of moving letterforms">
 
 
