@@ -23,7 +23,7 @@ https://www.youtube.com/watch?v=yiupIidTw4I
 
 The font sources panel got a redesign: the old design was too hard to extend. The first thing that was added was settings for global guidelines. Previously, Fontra only supported per-glyph guidelines, but with this new feature we added support for global guidelines.
 
-In addition to .ttf and .otf, Fontra can now read the .woff and .woff2 formats, for convenient inspection of such font files.
+In addition to .ttf and .otf, Fontra can now read the .woff and .woff2 formats, for convenient inspection of such font files, or for conversion to an editable format.
 
 Many smaller bugs and user experience issues were fixed. For a complete list, please have a look at the [list of recent changes](https://fontra.xyz/changelog.html).
 
