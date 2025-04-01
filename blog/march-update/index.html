@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Fontra news for January – Font Overview</title>
-		<meta name="description" content="Fontra news for January, new features and updates">
+		<title>Fontra news for March</title>
+		<meta name="description" content="Fontra news for March. New features and improvements. Approaching version 1.0.">
 		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Fontra Blog">
 		<link rel="me" href="https://typo.social/@fontra">
 		
@@ -505,73 +505,67 @@ h6 {
 		<main id="skip">
 			<heading-anchors>
 				
-<h1 id="fontra-news-for-january-font-overview">Fontra news for January – Font Overview</h1>
+<h1 id="fontra-news-for-march">Fontra news for March</h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2025-01-30">30 January 2025</time></li>
+	<li><time datetime="2025-04-01">01 April 2025</time></li>
 	<li><a href="/tags/fontra/" class="post-tag">fontra</a></li>
 </ul>
 
-<p>This month's big news is that we finally have a font overview.</p>
-<p>We fixed many bugs and implemented many small improvements. The full human-curated list of changes can be found <a href="https://fontra.xyz/changelog.html">here</a>, Even more details can be found on <a href="https://github.com/googlefonts/fontra">our main GitHub repository</a>.</p>
-<h3 id="font-overview">Font overview</h3>
-<p>A font overview is an essential component for a font editor, especially when it comes to designing a full Latin typeface of any other script that has a relatively small number of glyphs (say less than 5000).</p>
-<p>Fontra’s development was initially guided by Black Foundry’s needs for big CJK projects, in which character sets are managed separately. A font overview wasn’t an immediate priority. But now that we have achieved most of the essential parts for CJK font design, we are able to move forward and improve Fontra for broader font development.</p>
-<picture><source type="image/avif" srcset="/blog/font-overview/8otm50hGBH-2608.avif 2608w"><source type="image/webp" srcset="/blog/font-overview/8otm50hGBH-2608.webp 2608w"><img loading="lazy" decoding="async" src="/blog/font-overview/8otm50hGBH-2608.png" alt="Screenshot of Fontra's Font Overview" width="2608" height="1754"></picture>
-<p>When opening or creating a font with Fontra, the default view is now the font overview. Double-clicking glyphs in the overview leads the user to an editor view.</p>
-<p><em>Pro tip: one can open multiple tabs or windows for the same font, by copying the URL into a new tab or window. It is possible to have multiple font overviews or glyph editors open for the same font.</em></p>
-<p>The left sidebar contains several user interface elements to help viewing the glyphs in the font in an organized way. For example, one can group the glyphs by script. The sections in the overview are collapsable. Alt-click on a section header collapses all sections. Or expands all, if all are collapsed.</p>
-<p>Glyph <em>filtering</em> is still somewhat limited: while you can quickly filter by glyph name in the search box, we anticipate additional filtering options in the future. We notice that early adopters are enthusiastically proposing additional features.</p>
-<p>The documentation for the font overview <a href="https://docs.fontra.xyz/reference/font-overview/workspace/">is being written</a>, and will be enhanced.</p>
-<p>In general, the options provide a &quot;view&quot; on the font's collection of glyphs. Changing the options does not change anything about the font itself, just <em>how we look at it</em>.</p>
-<h3 id="glyph-sets">Glyph sets</h3>
-<p>A &quot;Glyph set&quot; is a collection of glyphs, which is <em>independent</em> from the glyphs that are defined in the font. A glyph can be defined in the glyph set, but not in the font or vice versa. Glyphs in the set that do not exist in the font are represented as &quot;placeholder&quot; glyphs in overview, showing a generic character in gray if the code point exists.</p>
-<p>In the left sidebar, there are two sections about glyph sets:</p>
+<p>We welcomed a sizable set of new features and improvements this month:</p>
 <ul>
-<li>&quot;Project glyph sets&quot;: belong to the font, and are stored with the font data.</li>
-<li>&quot;My glyph sets&quot;: belong to the user, and are stored locally in the browser.</li>
+<li>Global source locations</li>
+<li>Background layers</li>
+<li>OpenType settings UI</li>
+<li>OpenType feature editor</li>
+<li>Glyphs backend changes for writing</li>
+<li>Improved backend/frontend separation</li>
 </ul>
-<p>The &quot;Project glyph sets&quot; contains one special glyph set &quot;This font's glyphs&quot;, that represents the glyphs that exist in the font, and nothing more.</p>
-<p>Selecting multiple glyph sets shows the <em>superset</em> of all selected sets.</p>
-<p>Glyphs sets are stored purely by references to online resources. A glyph set can reference any publicly visible text file containing glyph names, or a TSV/CSV file, containing code point and/or glyph name columns. Links to Google Docs or Google Sheets are internally converted to .txt or .csv download links, respectively.</p>
-<p>We are considering supporting uploading of local files in the future, but for now consider this a pilot, where we encourage people strongly to use (and create) online glyph set resources.</p>
-<p>The currently bundled preset glyph sets collections are from Google Fonts, Black Foundry, Adobe and Christoph Koeberlin. We are <a href="https://github.com/googlefonts/fontra/discussions/1943">open to suggestions</a> for more preset glyph sets.</p>
-<p>To add one or more glyph sets to either section, use the &quot;+&quot; button. This leads to a dialog where you can either activate any of the preset glyph sets, or add a custom glyph set.</p>
-<picture><source type="image/avif" srcset="/blog/font-overview/rYFmRkAxDQ-1896.avif 1896w"><source type="image/webp" srcset="/blog/font-overview/rYFmRkAxDQ-1896.webp 1896w"><img loading="lazy" decoding="async" src="/blog/font-overview/rYFmRkAxDQ-1896.png" alt="Screenshot of the Fontra Add/remove preset glyph sets dialog" width="1896" height="1280"></picture>
-<h3 id="custom-glyph-sets">Custom glyph sets</h3>
-<p>To create a custom glyph set, click the &quot;Add custom glyph set&quot; button in the above dialog. This leads to a different dialog, where the user can specify the parameters for a custom glyph set.</p>
-<p>We currently support two formats:</p>
+<h3 id="global-source-locations">Global source locations</h3>
+<p>This set of features has been in the works for a very long time (at least a year), and deserves a bit more explanation.</p>
+<p>Fontra allows glyphs to have as many or few sources at different locations within the design space. This is not limited or enforced by global settings, apart from the definition of variation axes. Until now, this information belonged solely to the glyph. While this is flexible for the glyph, this becomes problematic if global aspects of the design space change after glyphs have been constructed. For example, when the range of an axis needs changing.</p>
+<p>We have had the concept of “font sources” for a while. A “font source” has a location in the designspace, and is used as a place to hold information specific to that location. This is where vertical metrics (cap height, x-height, ascender, descender) are managed, global guidelines, and more. So these locations are considered important within the project.</p>
+<p>Commonly, one wants to draw glyph sources as well at (some of) these locations. We have introduced the concept of a “location base”, with which a <em>glyph source</em> can reference a <em>global font source</em>. A glyph source that uses this does not define its own location in design space, but refers to a global font source. This means that we can now change the location of all glyphs that reference a specific font source by editing the referenced font source.</p>
+<p>Additionally, this gave us the opportunity to improve the user experience when drawing variable glyphs. Previously, for each glyph, each desired source had to be created explicity. For example, if you wanted to draw a Bold variant for a glyph, the user would have to navigate to the desired Bold location, and then create the Bold source with a button click and a dialog confirmation before they could make the Bold outline. Now you can do it with a single click.</p>
+<picture><source type="image/avif" srcset="/blog/march-update/7u17yekD0t-2032.avif 2032w"><source type="image/webp" srcset="/blog/march-update/7u17yekD0t-2032.webp 2032w"><img loading="lazy" decoding="async" src="/blog/march-update/7u17yekD0t-2032.png" alt="A Screenshot of the designspace navigation panel, showing the improved source list and the new source layers list" width="2032" height="1770"></picture>
+<p>We have improved the UI for the glyph sources list in a couple of ways:</p>
 <ul>
-<li>A text file containing white-space separated glyph names
+<li>Global locations for which the glyph does not yet have a source is shown in the list, rendered in gray so the user sees “this location does not yet have a drawing”.</li>
+<li>After selecting such a source, the user can immediately manipulate the outline for that location. This implicitly creates the glyph source, and saves a lot of clicks when designing a variable glyph.</li>
+<li>A new source always starts with an interpolation. For example, if Regular and Bold sources already exist, but not yet a Medium source, going to the Medium source (provided it is defined as a font source) allows the user to instantly refine the shape at the Medium location.</li>
+</ul>
+<p>Summarizing, this new feature brings two great improvements:</p>
 <ul>
-<li>Code points are inferred from the glyph name</li>
+<li>After setting up the global sources, it becomes much much easier to populate the sources for variable glyphs.</li>
+<li>The locations for glyph sources <em>that use the location base feature</em> can be edited globally. <em>(Note that it is still possible to create sources that store their location strictly locally)</em></li>
 </ul>
-</li>
-<li>A tab-, comma-, or semicolon-separated text file (.tsv or .csv) with at least one column
-<ul>
-<li>Optionally a header row: the first non-empty, non-comment row</li>
-<li>A column can be specified by header cell or by zero-based column index</li>
-<li>The code point column can contain decimal or hexadecimal code points.</li>
-<li>Hexadecimal code points may be prefixed by <code>0x</code> or <code>U+</code></li>
-<li>If there is no code point, a code point will be inferred from the glyph name</li>
-<li>If there is no glyph name, a glyph name will be inferred from the code point</li>
-</ul>
-</li>
-</ul>
-<p>Additional info for both formats:</p>
-<ul>
-<li>For now, code point and glyph name &quot;guessing&quot; is done according to the Glyphs app naming convention, and will additionally parse <code>uni1234</code>-style and <code>u12345</code>-style names.</li>
-<li>Both formats support an optional comment character for comment-until-the-end-of-the-line-style comments.</li>
-</ul>
-<h3 id="font-overview-further-development">Font overview further development</h3>
-<p>In the future, it will be possible to copy/paste glyphs in the font overview, as well as to create and delete glyphs.</p>
-<h3 id="serverless-fontra">Serverless Fontra</h3>
-<p>In other news, Simon Cozens is experimenting with a so called &quot;serverless&quot; version of Fontra, that runs entirely in the browser. This is leading to some refactoring of our frontend code, that will be generally beneficial to the project. It makes some of Fontra's <em>intended</em> modularity more <em>practically</em> modular.</p>
-<p>We are very excited by these new possibilities, and we would like to point out that this <em>diversifies</em> Fontra's deployment options even more. It is not intended as a replacement of Fontra's already varied set of deployment options. As a quick reminder: There is Fontra Pak (our desktop application), but Fontra can also be run from the command line in a Terminal program. Additionally we have an SQL-based shared storage solution. A new collaborative Fontra server is under construction. Fontra truly is a multi-headed beast, in all the good senses!</p>
-<h3 id="other-ongoing-work">Other ongoing work</h3>
-<p>While we can read .glyphs and .glyphspackage data, so far we weren't able to write these formats. We are working to implement that, so people can edit .glyphs and .glyphspackage files directly with Fontra, without the need for conversion.</p>
+<h3 id="background-layers-aka-source-layers">Background layers, aka. “Source layers”</h3>
+<p>Fontra finally has a background layers feature. This took a fair amount of effort to implement, and this checks off a much-requested and needed feature from our list. Users can now create arbitrary additional layers to paste variations or sketch work or reference shapes.</p>
+<p>In addition to “background layers” we also call them “source layers”, as each background layer belongs to a glyph source. Reminder: a glyph source specifies a location in the design space.</p>
+<p>The screenshot in the previous section also shows the new “Source layers” list.</p>
+<p><a href="https://docs.fontra.xyz/reference/editor-view/panels/designspace">Documentation about source layers</a></p>
+<h3 id="opentype-settings-ui">OpenType settings UI</h3>
+<p>The Font info panel and the font sources panel have been enhanced with UI to add specific lower level OpenType-related settings data, so that users can tune details of the output of binary font files. Examples include settings for the <code>hhea</code>, <code>vhea</code>, and <code>OS/2</code> tables.</p>
+<h3 id="opentype-feature-editor">OpenType feature editor</h3>
+<p>We added a new panel in the Font info view to edit OpenType feature source code. We integrated a powerful open source code editor component called <a href="https://codemirror.net/">CodeMirror</a>. In the future, this can be enhanced with more refined code completion and syntax highlighting.</p>
+<picture><source type="image/avif" srcset="/blog/march-update/oMepkt9rZg-2426.avif 2426w"><source type="image/webp" srcset="/blog/march-update/oMepkt9rZg-2426.webp 2426w"><img loading="lazy" decoding="async" src="/blog/march-update/oMepkt9rZg-2426.png" alt="A Screenshot of the OpenType featurers panel" width="2426" height="1752"></picture>
+<h3 id="glyphs-backend-changes-for-writing">Glyphs backend changes for writing</h3>
+<p>Our backend for reading <code>.glyphs</code> and <code>.glyphpackage</code> files has been upgraded to also <em>write</em>. This is a work in progress that is being rolled out in phases. We have completed the first major step, which adds editing and creation of basic glyph data, including editing and creating of background layers. We cannot yet create a .glyphs file from scratch, but we find this a very exciting start.</p>
+<p>So, to emphasize and repeat, <em>you can now open your <code>.glyphs</code> and <code>.glyphpackage</code> files directly in Fontra Pak and start editing glyphs and start creating new glyphs!</em></p>
+<h3 id="improved-backend-frontend-separation-aka-the-js-split-big-bang-operation">Improved backend/frontend separation, aka. the “JS-split” Big-Bang operation</h3>
+<p>Simon Cozens proposed and then implemented a major refactoring in how our server code and front end code is organized, and improved the documentation for how they interoperate. The initial purpose of this is to allow him to experiment with a server-less version of Fontra. Additionally, it improved the code base generally by modernizing the project to use a bundler for JavaScript (and other language) resources. It did make our build somewhat more complex, especially with out-of-tree front end extensions such as fontra-rcjk. We managed to keep breakage to a minimum, but as expected we did experience some fallout in the form of minor regressions, that have since been fixed.</p>
+<h3 id="menu-bar-improvements">Menu bar improvements</h3>
+<p>We received excellent contributions from Johannes Abendroth, who (among other things) vastly improved the menu bar and menu panel’s keyboard navigation functionality.</p>
+<h3 id="documentation">Documentation</h3>
+<p>There have been many content updates to our <a href="https://docs.fontra.xyz/">user documentation website</a>.</p>
+<p>We would love to receive suggestions, additions and improvements from the community, and encourage anyone (you?) to participate in <a href="https://github.com/googlefonts/fontra-docs">the documentation repository</a>. Documentation is hard, and we need your help.</p>
+<h3 id="next-up">Next up</h3>
+<p>The biggest and highest priority item on our TODO list is currently to add functionality to author and edit kerning. You can imagine that’s going to be a fairly big one. We plan to land it in April, though. This is the last significant step before we will call Fontra &quot;1.0&quot;.</p>
+<h3 id="concluding">Concluding</h3>
+<p>March was a very productive month, where we met almost all of our goals. As always, please check the <a href="https://fontra.xyz/changelog.html">changelog</a> for a more detailed list of changes.</p>
+<p>Be sure to check out Fontra’s progress by downloading a fresh version of <a href="https://fontra-download.black-foundry.com/FontraPak.dmg">Fontra Pak for macOS</a> or <a href="https://fontra-download.black-foundry.com/FontraPak.zip">Fontra Pak for Windows</a>, or check out the <a href="https://github.com/googlefonts/fontra-pak">source code for Fontra Pak</a> if you’d like to run it on other platforms.</p>
 
-<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/introduction/">Welcome to the Fontra blog! A brief history of the project.</a></li><li class="links-nextprev-next">Next →<br><a href="/blog/february-update/">Fontra news for February</a></li>
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/february-update/">Fontra news for February</a></li>
 </ul>
 
 			</heading-anchors>
@@ -581,7 +575,7 @@ h6 {
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/font-overview/` was built on 2025-04-01T07:19:58.015Z -->
+		<!-- This page `/blog/march-update/` was built on 2025-04-01T07:19:58.015Z -->
 		<script type="module" src="/dist/xbxy_EL6cU.js"></script>
 	</body>
 </html>
