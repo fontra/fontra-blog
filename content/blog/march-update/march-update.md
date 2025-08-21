@@ -75,7 +75,7 @@ We received excellent contributions from Johannes Abendroth, who (among other th
 
 There have been many content updates to our [user documentation website](https://docs.fontra.xyz/).
 
-We would love to receive suggestions, additions and improvements from the community, and encourage anyone (you?) to participate in [the documentation repository](https://github.com/googlefonts/fontra-docs). Documentation is hard, and we need your help.
+We would love to receive suggestions, additions and improvements from the community, and encourage anyone (you?) to participate in [the documentation repository](https://github.com/fontra/fontra-docs). Documentation is hard, and we need your help.
 
 ### Next up
 
@@ -85,4 +85,4 @@ The biggest and highest priority item on our TODO list is currently to add funct
 
 March was a very productive month, where we met almost all of our goals. As always, please check the [changelog](https://fontra.xyz/changelog.html) for a more detailed list of changes.
 
-Be sure to check out Fontra’s progress by downloading a fresh version of [Fontra Pak for macOS](https://fontra-download.black-foundry.com/FontraPak.dmg) or [Fontra Pak for Windows](https://fontra-download.black-foundry.com/FontraPak.zip), or check out the [source code for Fontra Pak](https://github.com/googlefonts/fontra-pak) if you’d like to run it on other platforms.
+Be sure to check out Fontra’s progress by downloading a fresh version of [Fontra Pak for macOS](https://fontra-download.black-foundry.com/FontraPak.dmg) or [Fontra Pak for Windows](https://fontra-download.black-foundry.com/FontraPak.zip), or check out the [source code for Fontra Pak](https://github.com/fontra/fontra-pak) if you’d like to run it on other platforms.

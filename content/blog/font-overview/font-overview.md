@@ -6,7 +6,7 @@ tags: fontra
 ---
 This month's big news is that we finally have a font overview. 
 
-We fixed many bugs and implemented many small improvements. The full human-curated list of changes can be found [here](https://fontra.xyz/changelog.html), Even more details can be found on [our main GitHub repository](https://github.com/googlefonts/fontra).
+We fixed many bugs and implemented many small improvements. The full human-curated list of changes can be found [here](https://fontra.xyz/changelog.html), Even more details can be found on [our main GitHub repository](https://github.com/fontra/fontra).
 
 ### Font overview
 
@@ -45,7 +45,7 @@ Glyphs sets are stored purely by references to online resources. A glyph set can
 
 We are considering supporting uploading of local files in the future, but for now consider this a pilot, where we encourage people strongly to use (and create) online glyph set resources.
 
-The currently bundled preset glyph sets collections are from Google Fonts, Black Foundry, Adobe and Christoph Koeberlin. We are [open to suggestions](https://github.com/googlefonts/fontra/discussions/1943) for more preset glyph sets.
+The currently bundled preset glyph sets collections are from Google Fonts, Black Foundry, Adobe and Christoph Koeberlin. We are [open to suggestions](https://github.com/fontra/fontra/discussions/1943) for more preset glyph sets.
 
 To add one or more glyph sets to either section, use the "+" button. This leads to a dialog where you can either activate any of the preset glyph sets, or add a custom glyph set.
 
