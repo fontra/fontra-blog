@@ -15,7 +15,7 @@ Though MacOS and Windows compatible binaries are available from [official websit
 
 ## Compiling from source
 
-Experienced Linux users who are comfortable with downloading the source and compiling at their local machine, can do so by cloning the [Fontra github repo](https://github.com/fontra/fontra) and following the instructions in [README.md](https://github.com/fontra/fontra/blob/main/README.md).  Remember if you want to create a new font project, or export the font from fontra itself you should clone and compile [Fontra Pak](https://github.com/fontra/fontra-pak).
+Experienced Linux users who are comfortable with downloading the source and compiling at their local machine, can do so by cloning the [Fontra github repo](https://github.com/fontra/fontra) and following the instructions in [README.md](https://github.com/fontra/fontra/blob/main/README.md). Remember if you want to create a new font project, or export the font from fontra itself you should clone and compile [Fontra Pak](https://github.com/fontra/fontra-pak).
 
 The steps involve running the following commands in a terminal:
 ```
@@ -30,7 +30,7 @@ The compiled binary will be available under fontra-pak/dist directory.
 The benefits of compiling from source include:
 
 * Getting a software which is custom made for your hardware.
-* It is currently the only option for Linux users running on non X86_64  platforms like ARM or PPCs based and older unsupported versions of Linux.
+* It is currently the only option for Linux users running on non X86_64 platforms like ARM or PPCs based and older unsupported versions of Linux.
 * It is also the way officially supported by the developers in Linux.
 
 However new and casual users of Linux need not compile from source. They can easily install using any of the following options.
@@ -53,7 +53,7 @@ Ubuntu users can install Fontra Pak directly from 'Ubuntu Software' by searching
 
 ![Ubuntu software fontrapak](./ubuntu-software-fontrapak.png)
 
-For other supported Linux distributions you have to basically enable `snapd`  in your distribution and then run the command
+For other supported Linux distributions you have to basically enable `snapd` in your distribution and then run the command
 
 `sudo snap install fontrapak`
 
@@ -69,7 +69,7 @@ After installation, search for `fontrapak` and click on the `fontrapak` launcher
 
 ![fontrapak snap launcher](./fontrapak-snap-launcher.png)
 
-or simply type in a  terminal
+or simply type in a terminal
 
 `fontrapak`
 
@@ -136,7 +136,7 @@ To update pre-compiled pyinstaller binary or Flatpak just visit the repository f
 
 I am a physician by training and profession, I took up making fonts as a hobby as part of [an initiative to enable Bengali in Linux](https://opensource.com/article/20/7/linux-bengali). For more than 20 years, I have been using fontforge as my only font editor, and being an amateur, it was sufficient for my font making. About a year ago, in July 2024, I came across a youtube video about making a variable font using fontforge. I got interested in variable font technology and started making a very simple [variable font with rectancular components](https://github.com/mitradranirban/samaano-fonts) using Fontforge. However it was very difficult to use a tool for a job it was not meant to be. So I frequently faced difficulties. Using a commercial font editor was out of question as it is a hobby project and I needed something that would work in my Ubuntu workstation as I have stopped using Windows since 2017.
 
-Then I came to know about Fontra. I cloned the repository and started using Fontra. It was a refreshing user interface compared to age old UI of Fontforge. My novice-level questions were quickly answered by Just van Rossum. But though I was using Fontra to edit the glyph, I was using fontmake to compile the font. Problem arose when I made a font with variable component which fontmake failed to compile. Just suggested  that I can use Fontra Pak to export the font which will take care of the variable components. So I compiled FontraPak and started using it.
+Then I came to know about Fontra. I cloned the repository and started using Fontra. It was a refreshing user interface compared to age old UI of Fontforge. My novice-level questions were quickly answered by Just van Rossum. But though I was using Fontra to edit the glyph, I was using fontmake to compile the font. Problem arose when I made a font with variable component which fontmake failed to compile. Just suggested that I can use Fontra Pak to export the font which will take care of the variable components. So I compiled FontraPak and started using it.
 
 ### Snapping the Pak
 
@@ -144,7 +144,7 @@ In an [conversation in mastodon about Fontra](https://typo.social/@fontra/114262
 
 #### Trials and Tribulations
 
-My lack of a programming background was a big hindrance to create an effective solution. I also found there are few knowlegable volunteers left in the forum who could guide me in the process. So I look help of Large Language Model (LLM) chatbots. But LLMs often produced outdated or plain wrong code. Coding with them seemed to me like a blind showing the road to another. Moreover due to network congestion and instability in our area, I had difficulty in building locally, so used ubuntu launchpad and github bulder. I also undertook a strategy of debugging the code of one LLM  with another, as though they could not find fault in their own code, they seemed expert in picking up fault in code generated by another LLM. And by feeding the build error code helped in gradually correcting the packaging errors. Finally the snap was published in snap store on 4th of April.
+My lack of a programming background was a big hindrance to create an effective solution. I also found there are few knowlegable volunteers left in the forum who could guide me in the process. So I look help of Large Language Model (LLM) chatbots. But LLMs often produced outdated or plain wrong code. Coding with them seemed to me like a blind showing the road to another. Moreover due to network congestion and instability in our area, I had difficulty in building locally, so used ubuntu launchpad and github bulder. I also undertook a strategy of debugging the code of one LLM with another, as though they could not find fault in their own code, they seemed expert in picking up fault in code generated by another LLM. And by feeding the build error code helped in gradually correcting the packaging errors. Finally the snap was published in snap store on 4th of April.
 
 Despite not using Linux themselves, Fontra develeopers, particularly Just van Rossum, always encouraged my endevour, so I was able to automate the snap generation by Github actions. Now nightly build was automatically packed in the edge channel of snap store.
 
@@ -154,12 +154,12 @@ I got feedback from some users that snap "is not just the right thing" for a fre
 
 ### Future of Fontra in Linux
 
-I found out pyinstaller compilation is unnecessary in Linux. If  all the requirements are install in a python virtual environment in downloaded fontra-pak directory, the FontraPakMain.py script can be directly run from the venv and it has a smaller memory footprint.
+I found out pyinstaller compilation is unnecessary in Linux. If all the requirements are install in a python virtual environment in downloaded fontra-pak directory, the FontraPakMain.py script can be directly run from the venv and it has a smaller memory footprint.
 
 ![Fontra Pak without pyinstaller](./fontra-pak-direct.png)
 
  I tried this approach for both snap packaging and Flatpak initially but failed, either due to my inexperience or may be due to the sandbox environment in which snap and flatpak are generated. 
 
-But it may be possible by an experienced python app packager to package Fontra Pak as a native app like  .deb package (for Debian/Ubuntu/Mint etc) or a .rpm package (for Fedora/RHEL/Suse) . It will also make it installble in Linux in non X86_64 architecture (Fontra in Raspberry Pi, anyone?).
+But it may be possible by an experienced python app packager to package Fontra Pak as a native app like `.deb` package (for Debian/Ubuntu/Mint etc) or a `.rpm` package (for Fedora/RHEL/Suse). It will also make it installble in Linux in non X86_64 architecture (Fontra in Raspberry Pi, anyone?).
 
 In future I expect Fontra to be in repository of all major Linux distributions. Any help in this regard will be highly solicited by both Fontra developers as well as Desktop Linux users who will get easy accesss to next generation of Free and Libre Font editor.
