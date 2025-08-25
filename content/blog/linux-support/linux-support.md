@@ -5,7 +5,7 @@ date: 2025-08-25
 tags: fontra, linux, snap, flatpak
 ---
 
-This is an invited guest entry by [Dr. Anirban Mitra](https://github.com/mitradranirban).
+This is an invited guest blog post by [Dr. Anirban Mitra](https://github.com/mitradranirban).
 
 # Fontra Font Editor in GNU/ Linux Desktop
 
