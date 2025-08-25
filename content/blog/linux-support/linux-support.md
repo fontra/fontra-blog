@@ -7,7 +7,7 @@ tags: fontra, linux, snap, flatpak
 
 This is an invited guest blog post by [Dr. Anirban Mitra](https://github.com/mitradranirban).
 
-# Fontra Font Editor in GNU/Linux Desktop
+# Fontra Font Editor on GNU/Linux Desktop
 
 Fontra is a free/libre open source cross-platform browser-based variable-first font editor.
 
