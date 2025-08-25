@@ -17,7 +17,7 @@ Though MacOS and Windows compatible binaries are available from [official websit
 
 Experienced Linux users who are comfortable with downloading the source and compiling at their local machine, can do so by cloning the [Fontra github repo](https://github.com/fontra/fontra) and following the instructions in [README.md](https://github.com/fontra/fontra/blob/main/README.md).  Remember if you want to create a new font project, or export the font from fontra itself you should clone and compile [Fontra Pak](https://github.com/fontra/fontra-pak).
 
-The steps involve running the following commands in a terminal
+The steps involve running the following commands in a terminal:
 ```
 git clone https://github.com/fontra/fontra-pak
 cd fontra-pak/
@@ -29,7 +29,7 @@ The compiled binary will be available under fontra-pak/dist directory.
 
 The benefits of compiling from source include:
 
-* getting a software which is custom made for your hardware.
+* Getting a software which is custom made for your hardware.
 * It is currently the only option for Linux users running on non X86_64  platforms like ARM or PPCs based and older unsupported versions of Linux.
 * It is also the way officially supported by the developers in Linux.
 
@@ -45,7 +45,7 @@ chmod +x fontrapak
 ./fontrapak
 ```
 
-In case the pre-compiled binary does not work in your system,or you want to sandbox the application, or want to launch by just clicking an icon, you have option for going for either snap package or flatpak wrapper of Fontra Pak.
+In case the pre-compiled binary does not work in your system, or you want to sandbox the application, or want to launch by just clicking an icon, you have option for going for either snap package or flatpak wrapper of Fontra Pak.
 
 ## FontraPak Snap package
 
