@@ -150,15 +150,15 @@ Despite not using Linux themselves, Fontra develeopers, particularly Just van Ro
 
 ### Flattening the Pak
 
-I got feedback from some users that snap "is not just the right thing" for a free software. As indicated above, a flatpak would be a better solution. I wanted to build the Fontra flatpak from source buteven with the help of LLMs like Github Copilot could not correct the errors, and finally I gave up. So I took the same shortcut as that of the snap package of creating a flatplak wrapper around the pyinstaller binary, that will provide the necessary dependancy, also providing a simple way to install and launch the app in Linux desktop.
+I got feedback from some users that snap "is not just the right thing" for a free software. As indicated above, a flatpak would be a better solution. I wanted to build the Fontra flatpak from source but even with the help of LLMs like Github Copilot could not correct the errors, and finally I gave up. So I took the same shortcut as that of the snap package, of creating a flatplak wrapper around the pyinstaller binary, that will provide the necessary dependancy, also providing a simple way to install and launch the app in Linux desktop.
 
 ### Future of Fontra in Linux
 
-I found out pyinstaller compilation is unnecessary in Linux. If all the requirements are install in a python virtual environment in downloaded fontra-pak directory, the FontraPakMain.py script can be directly run from the venv and it has a smaller memory footprint.
+I found out pyinstaller compilation is unnecessary in Linux. If all the requirements are installed in a python virtual environment in downloaded fontra-pak directory, the FontraPakMain.py script can be directly run from the venv and it has a smaller memory footprint.
 
 ![Fontra Pak without pyinstaller](./fontra-pak-direct.png)
 
- I tried this approach for both snap packaging and Flatpak initially but failed, either due to my inexperience or may be due to the sandbox environment in which snap and flatpak are generated. 
+ I tried this approach for both snap packaging and Flatpak initially but failed, either due to my inexperience or may be due to the sandbox environment in which snap and flatpak are generated.
 
 But it may be possible by an experienced python app packager to package Fontra Pak as a native app like `.deb` package (for Debian/Ubuntu/Mint etc) or a `.rpm` package (for Fedora/RHEL/Suse). It will also make it installble in Linux in non X86_64 architecture (Fontra in Raspberry Pi, anyone?).
 
