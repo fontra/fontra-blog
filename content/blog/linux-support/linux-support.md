@@ -1,6 +1,6 @@
 ---
 title: Fontra on Linux
-description: Fontra on Linux, packages and
+description: Fontra on Linux, packages and installation options
 date: 2025-08-25
 tags: fontra, linux, snap, flatpak
 ---
