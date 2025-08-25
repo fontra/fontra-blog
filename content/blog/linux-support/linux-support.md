@@ -7,14 +7,15 @@ tags: fontra, linux, snap, flatpak
 
 This is an invited guest blog post by [Dr. Anirban Mitra](https://github.com/mitradranirban).
 
-# Fontra Font Editor in GNU/ Linux Desktop
+# Fontra Font Editor in GNU/Linux Desktop
 
-Fontra is a free/libre open source cross-platform browser based variable first font editor.
+Fontra is a free/libre open source cross-platform browser-based variable-first font editor.
 
-Though MacOS and Windows compatible binaries are available in [official website](https://fontra.xyz), linux Desktop users can also use Fontra to create or modify their font. As common with the Linux ecosystem, there are multiple ways to do it.
+Though MacOS and Windows compatible binaries are available from [official website](https://fontra.xyz), Linux Desktop users can also use Fontra to create or modify their font. As is common with the Linux ecosystem, there are multiple ways to do it.
 
 ## Compiling from source
-Experienced linux users who are comfortable with downloading the source and compiling at their local machine, can do so by cloning the [Fontra github repo](https://github.com/fontra/fontra) and following the instructions in [README.md](https://github.com/fontra/fontra/blob/main/README.md).  Remember if you want to create a new font project, or export the font from fontra itself you should clone and compile [Fontra Pak](https://github.com/fontra/fontra-pak).
+
+Experienced Linux users who are comfortable with downloading the source and compiling at their local machine, can do so by cloning the [Fontra github repo](https://github.com/fontra/fontra) and following the instructions in [README.md](https://github.com/fontra/fontra/blob/main/README.md).  Remember if you want to create a new font project, or export the font from fontra itself you should clone and compile [Fontra Pak](https://github.com/fontra/fontra-pak).
 
 The steps involve running the following commands in a terminal
 ```
@@ -29,7 +30,7 @@ The compiled binary will be available under fontra-pak/dist directory.
 The benefits of compiling from source include:
 
 * getting a software which is custom made for your hardware.
-* It is currently the only option for linux users running on non X86_64  platforms like ARM or PPCs based and older unsupported versions of linux.
+* It is currently the only option for Linux users running on non X86_64  platforms like ARM or PPCs based and older unsupported versions of Linux.
 * It is also the way officially supported by the developers in Linux.
 
 However new and casual users of Linux need not compile from source. They can easily install using any of the following options.
@@ -52,11 +53,11 @@ Ubuntu users can install Fontra Pak directly from 'Ubuntu Software' by searching
 
 ![Ubuntu software fontrapak](./ubuntu-software-fontrapak.png)
 
-For other supported linux distributions you have to basically enable snapd  in your distribution and then run the command
+For other supported Linux distributions you have to basically enable snapd  in your distribution and then run the command
 
 `sudo snap install fontrapak`
 
-For instructions for enabling snapd in you linux distribution go to [Fontra Pak snapcraft page](https://snapcraft.io/fontrapak) and click on your distribution on the bottom of the page.
+For instructions for enabling snapd in you Linux distribution go to [Fontra Pak snapcraft page](https://snapcraft.io/fontrapak) and click on your distribution on the bottom of the page.
 
 ![snap in other distros](./snap-other-distro.png)
 
@@ -74,7 +75,7 @@ or simply type in a  terminal
 
 ### Response to fontrapak snap
 
-Since its release in April 2025, Fontra pak unofficial snap is showing good growth in its users across various countries even in non Ubuntu linux distributions.
+Since its release in April 2025, Fontra pak unofficial snap is showing good growth in its users across various countries even in non Ubuntu Linux distributions.
 
 ![Fontrapak snap use](./fontrapak-snap-user.png)
 
@@ -86,7 +87,7 @@ However many Linux users express their unwillingness in using snaps, reasons bei
 * Installing snap package requires *sudo* previlege, all user may not have that.
 * Big memory footprint of mounted snaps even when not in use. 
 
-All those factors were limiting use of Fontra snap in desktop linux.
+All those factors were limiting use of Fontra snap in desktop Linux.
 
 ## Fontrapak Flatpak
 
@@ -124,7 +125,7 @@ A local browser window will open and fonts can be viewed or edited (in case of w
 
 Remember, due to sandboxing nature of snap apps, it can accesss files only in the user's home directory.
 
-### Updating Fontra in linux
+### Updating Fontra in Linux
 
 Snap packages are automatically updated. If it is not, you can update with the command
 `sudo snap refresh fontrapak`
@@ -153,12 +154,12 @@ I got feedback from some users that snap "is not just the right thing" for a fre
 
 ### Future of Fontra in Linux
 
-I found out pyinstaller compilation is unnecessary in linux. If  all the requirements are install in a python virtual environment in downloaded fontra-pak directory, the FontraPakMain.py script can be directly run from the venv and it has a smaller memory footprint.
+I found out pyinstaller compilation is unnecessary in Linux. If  all the requirements are install in a python virtual environment in downloaded fontra-pak directory, the FontraPakMain.py script can be directly run from the venv and it has a smaller memory footprint.
 
 ![Fontra Pak without pyinstaller](./fontra-pak-direct.png)
 
  I tried this approach for both snap packaging and Flatpak initially but failed, either due to my inexperience or may be due to the sandbox environment in which snap and flatpak are generated. 
 
-But it may be possible by an experienced python app packager to package Fontra Pak as a native app like  .deb package (for Debian/Ubuntu/Mint etc) or a .rpm package (for Fedora/RHEL/Suse) . It will also make it installble in linux in non X86_64 architecture (Pontra in Raspberry Pi, anyone?).
+But it may be possible by an experienced python app packager to package Fontra Pak as a native app like  .deb package (for Debian/Ubuntu/Mint etc) or a .rpm package (for Fedora/RHEL/Suse) . It will also make it installble in Linux in non X86_64 architecture (Pontra in Raspberry Pi, anyone?).
 
-In future I expect Pontra to be in repository of all major linux distributions. Any help in this regard will be highly solicited by both Fontra developers as well as Desktop Linux users who will get easy accesss to next generation of Free and Libre Font editor.
+In future I expect Pontra to be in repository of all major Linux distributions. Any help in this regard will be highly solicited by both Fontra developers as well as Desktop Linux users who will get easy accesss to next generation of Free and Libre Font editor.
