@@ -50,7 +50,7 @@ In case the pre-compiled binary does not work in your system,or you want to sand
 
 Ubuntu users can install Fontra Pak directly from 'Ubuntu Software' by searching for `fontrapak`.
 
-<img src="./ubuntu-software-fontrapak.png" alt="Ubuntu software fontrapak">
+![Ubuntu software fontrapak](./ubuntu-software-fontrapak.png)
 
 For other supported linux distributions you have to basically enable snapd  in your distribution and then run the command
 
@@ -58,7 +58,7 @@ For other supported linux distributions you have to basically enable snapd  in y
 
 For instructions for enabling snapd in you linux distribution go to [Fontra Pak snapcraft page](https://snapcraft.io/fontrapak) and click on your distribution on the bottom of the page.
 
-<img src="./snap-other-distro.png" alt="snap in other distros">
+![snap in other distros](./snap-other-distro.png)
 
 If you want latest nightly build of Fontra Pak instead of manually tested slightly older **stable** version, install from the **edge** channel 
 
@@ -66,7 +66,7 @@ If you want latest nightly build of Fontra Pak instead of manually tested slight
 
 After installation, search for `fontrapak` and click on the `fontrapak` launcher
 
-<img src="./fontrapak-snap-launcher.png" alt="fontrapak snap launcher">
+![fontrapak snap launcher](./fontrapak-snap-launcher.png)
 
 or simply type in a  terminal
 
@@ -76,7 +76,7 @@ or simply type in a  terminal
 
 Since its release in April 2025, Fontra pak unofficial snap is showing good growth in its users across various countries even in non Ubuntu linux distributions.
 
-<img src="./fontrapak-snap-user.png" alt="Fontrapak snap  use">
+![Fontrapak snap use](./fontrapak-snap-user.png)
 
 However many Linux users express their unwillingness in using snaps, reasons being
 
@@ -106,13 +106,13 @@ flatpak install fontra-pak.flatpak
 ```
 * Now search for FontraPak in Applications and click on the Fontra icon. 
 
-<img src="./flatpak-launcher.png" alt="flatpak launcher">
+![flatpak launcher](./flatpak-launcher.png)
 
 ## Using Fontra Pak in Linux
 
 All the above method will open the Fontra Pak window.
 
-<img src="./fontrapak-window.png" alt="Fontra Pak Window">
+![Fontra Pak Window](./fontrapak-window.png)
 
 After that the user can:
 
@@ -155,7 +155,7 @@ I got feedback from some users that snap "is not just the right thing" for a fre
 
 I found out pyinstaller compilation is unnecessary in linux. If  all the requirements are install in a python virtual environment in downloaded fontra-pak directory, the FontraPakMain.py script can be directly run from the venv and it has a smaller memory footprint.
 
-<img src="./fontra-pak-direct.png" alt="Fontra Pak without pyinstaller">
+![Fontra Pak without pyinstaller](./fontra-pak-direct.png)
 
  I tried this approach for both snap packaging and Flatpak initially but failed, either due to my inexperience or may be due to the sandbox environment in which snap and flatpak are generated. 
 
