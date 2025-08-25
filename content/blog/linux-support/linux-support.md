@@ -53,11 +53,11 @@ Ubuntu users can install Fontra Pak directly from 'Ubuntu Software' by searching
 
 ![Ubuntu software fontrapak](./ubuntu-software-fontrapak.png)
 
-For other supported Linux distributions you have to basically enable snapd  in your distribution and then run the command
+For other supported Linux distributions you have to basically enable `snapd`  in your distribution and then run the command
 
 `sudo snap install fontrapak`
 
-For instructions for enabling snapd in you Linux distribution go to [Fontra Pak snapcraft page](https://snapcraft.io/fontrapak) and click on your distribution on the bottom of the page.
+For instructions for enabling `snapd` in you Linux distribution go to [Fontra Pak snapcraft page](https://snapcraft.io/fontrapak) and click on your distribution on the bottom of the page.
 
 ![snap in other distros](./snap-other-distro.png)
 
@@ -81,9 +81,9 @@ Since its release in April 2025, Fontra pak unofficial snap is showing good grow
 
 However many Linux users express their unwillingness in using snaps, reasons being
 
-* snap is disabled or cumbersome to set up in some distribution.
-* they are not ok with propietory store backend and tracking associated with snap packages.
-* they don't like the mandatory update feature of snap packages.
+* Snap is disabled or cumbersome to set up in some distribution.
+* They are not ok with propietory store backend and tracking associated with snap packages.
+* They don't like the mandatory update feature of snap packages.
 * Installing snap package requires *sudo* previlege, all user may not have that.
 * Big memory footprint of mounted snaps even when not in use. 
 
