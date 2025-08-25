@@ -5,11 +5,122 @@
   <subtitle>Posting about Fontra development.</subtitle>
   <link href="https://blog.fontra.xyz/feed/feed.xml" rel="self" />
   <link href="https://blog.fontra.xyz/" />
-  <updated>2025-04-01T00:00:00Z</updated>
+  <updated>2025-08-25T00:00:00Z</updated>
   <id>https://blog.fontra.xyz/</id>
   <author>
     <name>Fontra Team</name>
   </author>
+  <entry>
+    <title>Fontra on Linux</title>
+    <link href="https://blog.fontra.xyz/blog/linux-support/" />
+    <updated>2025-08-25T00:00:00Z</updated>
+    <id>https://blog.fontra.xyz/blog/linux-support/</id>
+    <content type="html">&lt;p&gt;This is an invited guest blog post by &lt;a href=&quot;https://github.com/mitradranirban&quot;&gt;Dr. Anirban Mitra&lt;/a&gt;.&lt;/p&gt;
+&lt;h1 id=&quot;fontra-font-editor-on-gnu-linux-desktop&quot;&gt;Fontra Font Editor on GNU/Linux Desktop&lt;/h1&gt;
+&lt;p&gt;Fontra is a free/libre open source cross-platform browser-based variable-first font editor.&lt;/p&gt;
+&lt;p&gt;Though MacOS and Windows compatible binaries are available from &lt;a href=&quot;https://fontra.xyz&quot;&gt;official website&lt;/a&gt;, Linux Desktop users can also use Fontra to create or modify their font. As is common with the Linux ecosystem, there are multiple ways to do it.&lt;/p&gt;
+&lt;h2 id=&quot;compiling-from-source&quot;&gt;Compiling from source&lt;/h2&gt;
+&lt;p&gt;Experienced Linux users who are comfortable with downloading the source and compiling at their local machine, can do so by cloning the &lt;a href=&quot;https://github.com/fontra/fontra&quot;&gt;Fontra github repo&lt;/a&gt; and following the instructions in &lt;a href=&quot;https://github.com/fontra/fontra/blob/main/README.md&quot;&gt;README.md&lt;/a&gt;. Remember if you want to create a new font project, or export the font from fontra itself you should clone and compile &lt;a href=&quot;https://github.com/fontra/fontra-pak&quot;&gt;Fontra Pak&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The steps involve running the following commands in a terminal:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/fontra/fontra-pak
+cd fontra-pak/
+. venv/bin/activate
+pip install -r requirements.txt
+pyinstaller FontraPak.spec -y
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The compiled binary will be available under fontra-pak/dist directory.&lt;/p&gt;
+&lt;p&gt;The benefits of compiling from source include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Getting a software which is custom made for your hardware.&lt;/li&gt;
+&lt;li&gt;It is currently the only option for Linux users running on non X86_64 platforms like ARM or PPCs based and older unsupported versions of Linux.&lt;/li&gt;
+&lt;li&gt;It is also the way officially supported by the developers in Linux.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;However new and casual users of Linux need not compile from source. They can easily install using any of the following options.&lt;/p&gt;
+&lt;h2 id=&quot;pre-compiled-binary&quot;&gt;Pre-compiled Binary&lt;/h2&gt;
+&lt;p&gt;A pre-compiled binary created in a ubuntu-22.04 runner in GitHub is &lt;a href=&quot;https://github.com/mitradranirban/fontra-pak-linux/releases&quot;&gt;available for download here&lt;/a&gt;. This can be used in any Linux distribution with glibc version 2.35 or newer and AMD64 architechture. You can download the fontrapak.tgz file, just untar the package, make it executable and run it.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tar -xvf fontrapak.tgz
+cd fontrapak/
+chmod +x fontrapak
+./fontrapak
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In case the pre-compiled binary does not work in your system, or you want to sandbox the application, or want to launch by just clicking an icon, you have option for going for either snap package or flatpak wrapper of Fontra Pak.&lt;/p&gt;
+&lt;h2 id=&quot;fontrapak-snap-package&quot;&gt;FontraPak Snap package&lt;/h2&gt;
+&lt;p&gt;Ubuntu users can install Fontra Pak directly from &#39;Ubuntu Software&#39; by searching for &lt;code&gt;fontrapak&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://blog.fontra.xyz/blog/linux-support/Ptat4y_Ug8-1366.avif 1366w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://blog.fontra.xyz/blog/linux-support/Ptat4y_Ug8-1366.webp 1366w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://blog.fontra.xyz/blog/linux-support/Ptat4y_Ug8-1366.png&quot; alt=&quot;Ubuntu software fontrapak&quot; width=&quot;1366&quot; height=&quot;768&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;For other supported Linux distributions you have to basically enable &lt;code&gt;snapd&lt;/code&gt; in your distribution and then run the command&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo snap install fontrapak&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;For instructions for enabling &lt;code&gt;snapd&lt;/code&gt; in you Linux distribution go to &lt;a href=&quot;https://snapcraft.io/fontrapak&quot;&gt;Fontra Pak snapcraft page&lt;/a&gt; and click on your distribution on the bottom of the page.&lt;/p&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://blog.fontra.xyz/blog/linux-support/rtt3djJMIe-1366.avif 1366w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://blog.fontra.xyz/blog/linux-support/rtt3djJMIe-1366.webp 1366w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://blog.fontra.xyz/blog/linux-support/rtt3djJMIe-1366.png&quot; alt=&quot;snap in other distros&quot; width=&quot;1366&quot; height=&quot;768&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;If you want latest nightly build of Fontra Pak instead of manually tested slightly older &lt;strong&gt;stable&lt;/strong&gt; version, install from the &lt;strong&gt;edge&lt;/strong&gt; channel&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;snap install fontrapak --channel=edge&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;After installation, search for &lt;code&gt;fontrapak&lt;/code&gt; and click on the &lt;code&gt;fontrapak&lt;/code&gt; launcher&lt;/p&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://blog.fontra.xyz/blog/linux-support/aYuDwitxly-1356.avif 1356w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://blog.fontra.xyz/blog/linux-support/aYuDwitxly-1356.webp 1356w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://blog.fontra.xyz/blog/linux-support/aYuDwitxly-1356.png&quot; alt=&quot;fontrapak snap launcher&quot; width=&quot;1356&quot; height=&quot;280&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;or simply type in a terminal&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;fontrapak&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;response-to-fontrapak-snap&quot;&gt;Response to fontrapak snap&lt;/h3&gt;
+&lt;p&gt;Since its release in April 2025, Fontra pak unofficial snap is showing good growth in its users across various countries even in non Ubuntu Linux distributions.&lt;/p&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://blog.fontra.xyz/blog/linux-support/r-X4SemT9T-564.avif 564w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://blog.fontra.xyz/blog/linux-support/r-X4SemT9T-564.webp 564w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://blog.fontra.xyz/blog/linux-support/r-X4SemT9T-564.png&quot; alt=&quot;Fontrapak snap use&quot; width=&quot;564&quot; height=&quot;487&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;However many Linux users express their unwillingness in using snaps, reasons being&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Snap is disabled or cumbersome to set up in some distribution.&lt;/li&gt;
+&lt;li&gt;They are not ok with propietory store backend and tracking associated with snap packages.&lt;/li&gt;
+&lt;li&gt;They don&#39;t like the mandatory update feature of snap packages.&lt;/li&gt;
+&lt;li&gt;Installing snap package requires &lt;em&gt;sudo&lt;/em&gt; previlege, all user may not have that.&lt;/li&gt;
+&lt;li&gt;Big memory footprint of mounted snaps even when not in use.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All those factors were limiting use of Fontra snap in desktop Linux.&lt;/p&gt;
+&lt;h2 id=&quot;fontrapak-flatpak&quot;&gt;Fontrapak Flatpak&lt;/h2&gt;
+&lt;p&gt;So a flatpak wrapper is made around the same pyinstaller binary and is available for download from &lt;a href=&quot;https://github.com/mitradranirban/fontrapak-flatpak/releases&quot;&gt;this github project&lt;/a&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;To install, open a terminal and change to the directory where you downloaded the flatpak&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;cd path/to/downloaded/fontra-pak.flatpak&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;To download dependancies enable flathub repository&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Install the fontra-pak flatpak, either system wise or for the current user only&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;flatpak install fontra-pak.flatpak
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Now search for FontraPak in Applications and click on the Fontra icon.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://blog.fontra.xyz/blog/linux-support/4TGHLyiECl-838.avif 838w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://blog.fontra.xyz/blog/linux-support/4TGHLyiECl-838.webp 838w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://blog.fontra.xyz/blog/linux-support/4TGHLyiECl-838.png&quot; alt=&quot;flatpak launcher&quot; width=&quot;838&quot; height=&quot;627&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;h2 id=&quot;using-fontra-pak-in-linux&quot;&gt;Using Fontra Pak in Linux&lt;/h2&gt;
+&lt;p&gt;All the above method will open the Fontra Pak window.&lt;/p&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://blog.fontra.xyz/blog/linux-support/MJnrYa1IB--838.avif 838w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://blog.fontra.xyz/blog/linux-support/MJnrYa1IB--838.webp 838w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://blog.fontra.xyz/blog/linux-support/MJnrYa1IB--838.png&quot; alt=&quot;Fontra Pak Window&quot; width=&quot;838&quot; height=&quot;627&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;After that the user can:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Click on the Documentation Button to read the documentation&lt;/li&gt;
+&lt;li&gt;Click on the New Font... Button to create a new font&lt;/li&gt;
+&lt;li&gt;Drag or drop any of the supported format of file from your file manager on to the Fontrapak window.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A local browser window will open and fonts can be viewed or edited (in case of writable formats) in the browser window. A font can be generated from the browser interface.&lt;/p&gt;
+&lt;p&gt;Remember, due to sandboxing nature of snap apps, it can accesss files only in the user&#39;s home directory.&lt;/p&gt;
+&lt;h3 id=&quot;updating-fontra-in-linux&quot;&gt;Updating Fontra in Linux&lt;/h3&gt;
+&lt;p&gt;Snap packages are automatically updated. If it is not, you can update with the command
+&lt;code&gt;sudo snap refresh fontrapak&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;To update pre-compiled pyinstaller binary or Flatpak just visit the repository form where you downloaded and download and install the latest version.&lt;/p&gt;
+&lt;h2 id=&quot;some-backstory-and-how-i-got-involved&quot;&gt;Some backstory, and how I got involved&lt;/h2&gt;
+&lt;p&gt;I am a physician by training and profession, I took up making fonts as a hobby as part of &lt;a href=&quot;https://opensource.com/article/20/7/linux-bengali&quot;&gt;an initiative to enable Bengali in Linux&lt;/a&gt;. For more than 20 years, I have been using fontforge as my only font editor, and being an amateur, it was sufficient for my font making. About a year ago, in July 2024, I came across a youtube video about making a variable font using fontforge. I got interested in variable font technology and started making a very simple &lt;a href=&quot;https://github.com/mitradranirban/samaano-fonts&quot;&gt;variable font with rectancular components&lt;/a&gt; using Fontforge. However it was very difficult to use a tool for a job it was not meant to be. So I frequently faced difficulties. Using a commercial font editor was out of question as it is a hobby project and I needed something that would work in my Ubuntu workstation as I have stopped using Windows since 2017.&lt;/p&gt;
+&lt;p&gt;Then I came to know about Fontra. I cloned the repository and started using Fontra. It was a refreshing user interface compared to age old UI of Fontforge. My novice-level questions were quickly answered by Just van Rossum. But though I was using Fontra to edit the glyph, I was using fontmake to compile the font. Problem arose when I made a font with variable component which fontmake failed to compile. Just suggested that I can use Fontra Pak to export the font which will take care of the variable components. So I compiled FontraPak and started using it.&lt;/p&gt;
+&lt;h3 id=&quot;snapping-the-pak&quot;&gt;Snapping the Pak&lt;/h3&gt;
+&lt;p&gt;In an &lt;a href=&quot;https://typo.social/@fontra/114262871554026245&quot;&gt;conversation in mastodon about Fontra&lt;/a&gt;, Just suggested if community contributes to making Linux app, he would gladly incorporate it, as he can not test in Linux himself. I read about snap packaging, searched the snapcraft forum , and tried my hand in making the snap.&lt;/p&gt;
+&lt;h4 id=&quot;trials-and-tribulations&quot;&gt;Trials and Tribulations&lt;/h4&gt;
+&lt;p&gt;My lack of a programming background was a big hindrance to create an effective solution. I also found there are few knowlegable volunteers left in the forum who could guide me in the process. So I look help of Large Language Model (LLM) chatbots. But LLMs often produced outdated or plain wrong code. Coding with them seemed to me like a blind showing the road to another. Moreover due to network congestion and instability in our area, I had difficulty in building locally, so used ubuntu launchpad and github bulder. I also undertook a strategy of debugging the code of one LLM with another, as though they could not find fault in their own code, they seemed expert in picking up fault in code generated by another LLM. And by feeding the build error code helped in gradually correcting the packaging errors. Finally the snap was published in snap store on 4th of April.&lt;/p&gt;
+&lt;p&gt;Despite not using Linux themselves, Fontra develeopers, particularly Just van Rossum, always encouraged my endevour, so I was able to automate the snap generation by Github actions. Now nightly build was automatically packed in the edge channel of snap store.&lt;/p&gt;
+&lt;h3 id=&quot;flattening-the-pak&quot;&gt;Flattening the Pak&lt;/h3&gt;
+&lt;p&gt;I got feedback from some users that snap &amp;quot;is not just the right thing&amp;quot; for a free software. As indicated above, a flatpak would be a better solution. I wanted to build the Fontra flatpak from source but even with the help of LLMs like Github Copilot could not correct the errors, and finally I gave up. So I took the same shortcut as that of the snap package, of creating a flatplak wrapper around the pyinstaller binary, that will provide the necessary dependancy, also providing a simple way to install and launch the app in Linux desktop.&lt;/p&gt;
+&lt;h3 id=&quot;future-of-fontra-in-linux&quot;&gt;Future of Fontra in Linux&lt;/h3&gt;
+&lt;p&gt;I found out pyinstaller compilation is unnecessary in Linux. If all the requirements are installed in a python virtual environment in downloaded fontra-pak directory, the FontraPakMain.py script can be directly run from the venv and it has a smaller memory footprint.&lt;/p&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://blog.fontra.xyz/blog/linux-support/h8V_dBUzeA-1345.avif 1345w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://blog.fontra.xyz/blog/linux-support/h8V_dBUzeA-1345.webp 1345w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://blog.fontra.xyz/blog/linux-support/h8V_dBUzeA-1345.png&quot; alt=&quot;Fontra Pak without pyinstaller&quot; width=&quot;1345&quot; height=&quot;608&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;I tried this approach for both snap packaging and Flatpak initially but failed, either due to my inexperience or may be due to the sandbox environment in which snap and flatpak are generated.&lt;/p&gt;
+&lt;p&gt;But it may be possible by an experienced python app packager to package Fontra Pak as a native app like &lt;code&gt;.deb&lt;/code&gt; package (for Debian/Ubuntu/Mint etc) or a &lt;code&gt;.rpm&lt;/code&gt; package (for Fedora/RHEL/Suse). It will also make it installble in Linux in non X86_64 architecture (Fontra in Raspberry Pi, anyone?).&lt;/p&gt;
+&lt;p&gt;In future I expect Fontra to be in repository of all major Linux distributions. Any help in this regard will be highly solicited by both Fontra developers as well as Desktop Linux users who will get easy accesss to next generation of Free and Libre Font editor.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Fontra news for March</title>
     <link href="https://blog.fontra.xyz/blog/march-update/" />

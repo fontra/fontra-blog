@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Fontra on Linux</title>
+		<meta name="description" content="Fontra on Linux, packages and installation options">
+		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Fontra Blog">
+		<link rel="me" href="https://typo.social/@fontra">
+		
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+/* This is an arbitrary CSS string added to the bundle */
+/* Defaults */
+:root {
+	--font-family: InriaSans, system-ui, sans-serif;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+	--inria-bold: 650;
+}
+
+/* Theme colors */
+:root {
+	--color-gray-20: #e0e0e0;
+	--color-gray-50: #C0C0C0;
+	--color-gray-90: #333;
+
+	--background-color: #fff;
+
+	--text-color: var(--color-gray-90);
+	--text-color-link: #082840;
+	--text-color-link-active: #5f2b48;
+	--text-color-link-visited: #17050F;
+
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-gray-20: #e0e0e0;
+		--color-gray-50: #C0C0C0;
+		--color-gray-90: #dad8d8;
+
+		/* --text-color is assigned to --color-gray-_ above */
+		--text-color-link: #1493fb;
+		--text-color-link-active: #6969f7;
+		--text-color-link-visited: #a6a6f8;
+
+		--background-color: #15202b;
+	}
+}
+
+/* Fontra Blog fonts */
+
+@font-face {
+  font-family: "InriaSans";
+  src: url("/fonts/InriaSans-VF.woff2") format("woff2");
+  font-weight: 300 800;
+}
+
+@font-face {
+	font-family: "InriaSans";
+	src: url("/fonts/InriaSansItalic-VF.woff2") format("woff2");
+	font-weight: 300 800;
+	font-style: italic;
+}
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+@view-transition {
+	navigation: auto;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+body {
+	max-width: 40em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+/* Fluid images via https://www.zachleat.com/web/fluid-images/ */
+img{
+  max-width: 100%;
+}
+img[width][height] {
+  height: auto;
+}
+img[src$=".svg"] {
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+video,
+iframe {
+	width: 100%;
+	height: auto;
+}
+iframe {
+	aspect-ratio: 16/9;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: 1.5;
+}
+
+li {
+	line-height: 1.5;
+}
+
+a[href] {
+	color: var(--text-color-link);
+}
+a[href]:visited {
+	color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+main,
+footer {
+	padding: 1rem;
+}
+main :first-child {
+	margin-top: 0;
+}
+
+header {
+	border-bottom: 1px dashed var(--color-gray-20);
+}
+header:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.links-nextprev {
+	display: flex;
+	justify-content: space-between;
+	gap: .5em 1em;
+	list-style: "";
+	border-top: 1px dashed var(--color-gray-20);
+	padding: 1em 0;
+}
+.links-nextprev > * {
+	flex-grow: 1;
+}
+.links-nextprev-next {
+	text-align: right;
+}
+
+table {
+	margin: 1em 0;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	overflow-x: auto;
+}
+code {
+	/* word-break: break-all; */
+}
+
+/* Header */
+header {
+	display: flex;
+	gap: 1em .5em;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 1em;
+}
+.home-link {
+	font-size: 1em; /* 16px /16 */
+	font-weight: var(--inria-bold);
+	margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+	text-decoration: none;
+}
+
+/* Nav */
+.nav {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.nav-item {
+	display: inline-block;
+	margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+	text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+	text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+	list-style: none;
+	padding: 0;
+	padding-left: 1.5rem;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-item:before {
+	display: inline-block;
+	pointer-events: none;
+	content: "" counter(start-from, decimal-leading-zero) ". ";
+	line-height: 100%;
+	text-align: right;
+	margin-left: -1.5rem;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	font-weight: var(--inria-bold);
+	flex-basis: calc(100% - 1.5rem);
+	padding-left: .25em;
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+	font-weight: var(--inria-bold);
+}
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: .5em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post-metadata time {
+	margin-right: 1em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--inria-bold);
+}</style>
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<img src="/img/fontra-icon.svg" style="width: 3em; width: 3em;">
+
+			<a href="/" class="home-link">Fontra Blog</a>
+			<nav>
+				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="/">Home</a></li>
+					<li class="nav-item"><a href="/blog/">Archive</a></li>
+					<li class="nav-item"><a href="/about/">About</a></li>
+					<li class="nav-item"><a href="/feed/feed.xml">Feed</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			<heading-anchors>
+				
+<h1 id="fontra-on-linux">Fontra on Linux</h1>
+
+<ul class="post-metadata">
+	<li><time datetime="2025-08-25">25 August 2025</time></li>
+	<li><a href="/tags/fontra/" class="post-tag">fontra</a>, </li>
+	<li><a href="/tags/linux/" class="post-tag"> linux</a>, </li>
+	<li><a href="/tags/snap/" class="post-tag"> snap</a>, </li>
+	<li><a href="/tags/flatpak/" class="post-tag"> flatpak</a></li>
+</ul>
+
+<p>This is an invited guest blog post by <a href="https://github.com/mitradranirban">Dr. Anirban Mitra</a>.</p>
+<h1 id="fontra-font-editor-on-gnu-linux-desktop">Fontra Font Editor on GNU/Linux Desktop</h1>
+<p>Fontra is a free/libre open source cross-platform browser-based variable-first font editor.</p>
+<p>Though MacOS and Windows compatible binaries are available from <a href="https://fontra.xyz">official website</a>, Linux Desktop users can also use Fontra to create or modify their font. As is common with the Linux ecosystem, there are multiple ways to do it.</p>
+<h2 id="compiling-from-source">Compiling from source</h2>
+<p>Experienced Linux users who are comfortable with downloading the source and compiling at their local machine, can do so by cloning the <a href="https://github.com/fontra/fontra">Fontra github repo</a> and following the instructions in <a href="https://github.com/fontra/fontra/blob/main/README.md">README.md</a>. Remember if you want to create a new font project, or export the font from fontra itself you should clone and compile <a href="https://github.com/fontra/fontra-pak">Fontra Pak</a>.</p>
+<p>The steps involve running the following commands in a terminal:</p>
+<pre><code>git clone https://github.com/fontra/fontra-pak
+cd fontra-pak/
+. venv/bin/activate
+pip install -r requirements.txt
+pyinstaller FontraPak.spec -y
+</code></pre>
+<p>The compiled binary will be available under fontra-pak/dist directory.</p>
+<p>The benefits of compiling from source include:</p>
+<ul>
+<li>Getting a software which is custom made for your hardware.</li>
+<li>It is currently the only option for Linux users running on non X86_64 platforms like ARM or PPCs based and older unsupported versions of Linux.</li>
+<li>It is also the way officially supported by the developers in Linux.</li>
+</ul>
+<p>However new and casual users of Linux need not compile from source. They can easily install using any of the following options.</p>
+<h2 id="pre-compiled-binary">Pre-compiled Binary</h2>
+<p>A pre-compiled binary created in a ubuntu-22.04 runner in GitHub is <a href="https://github.com/mitradranirban/fontra-pak-linux/releases">available for download here</a>. This can be used in any Linux distribution with glibc version 2.35 or newer and AMD64 architechture. You can download the fontrapak.tgz file, just untar the package, make it executable and run it.</p>
+<pre><code>tar -xvf fontrapak.tgz
+cd fontrapak/
+chmod +x fontrapak
+./fontrapak
+</code></pre>
+<p>In case the pre-compiled binary does not work in your system, or you want to sandbox the application, or want to launch by just clicking an icon, you have option for going for either snap package or flatpak wrapper of Fontra Pak.</p>
+<h2 id="fontrapak-snap-package">FontraPak Snap package</h2>
+<p>Ubuntu users can install Fontra Pak directly from 'Ubuntu Software' by searching for <code>fontrapak</code>.</p>
+<p><picture><source type="image/avif" srcset="/blog/linux-support/Ptat4y_Ug8-1366.avif 1366w"><source type="image/webp" srcset="/blog/linux-support/Ptat4y_Ug8-1366.webp 1366w"><img loading="lazy" decoding="async" src="/blog/linux-support/Ptat4y_Ug8-1366.png" alt="Ubuntu software fontrapak" width="1366" height="768"></picture></p>
+<p>For other supported Linux distributions you have to basically enable <code>snapd</code> in your distribution and then run the command</p>
+<p><code>sudo snap install fontrapak</code></p>
+<p>For instructions for enabling <code>snapd</code> in you Linux distribution go to <a href="https://snapcraft.io/fontrapak">Fontra Pak snapcraft page</a> and click on your distribution on the bottom of the page.</p>
+<p><picture><source type="image/avif" srcset="/blog/linux-support/rtt3djJMIe-1366.avif 1366w"><source type="image/webp" srcset="/blog/linux-support/rtt3djJMIe-1366.webp 1366w"><img loading="lazy" decoding="async" src="/blog/linux-support/rtt3djJMIe-1366.png" alt="snap in other distros" width="1366" height="768"></picture></p>
+<p>If you want latest nightly build of Fontra Pak instead of manually tested slightly older <strong>stable</strong> version, install from the <strong>edge</strong> channel</p>
+<p><code>snap install fontrapak --channel=edge</code></p>
+<p>After installation, search for <code>fontrapak</code> and click on the <code>fontrapak</code> launcher</p>
+<p><picture><source type="image/avif" srcset="/blog/linux-support/aYuDwitxly-1356.avif 1356w"><source type="image/webp" srcset="/blog/linux-support/aYuDwitxly-1356.webp 1356w"><img loading="lazy" decoding="async" src="/blog/linux-support/aYuDwitxly-1356.png" alt="fontrapak snap launcher" width="1356" height="280"></picture></p>
+<p>or simply type in a terminal</p>
+<p><code>fontrapak</code></p>
+<h3 id="response-to-fontrapak-snap">Response to fontrapak snap</h3>
+<p>Since its release in April 2025, Fontra pak unofficial snap is showing good growth in its users across various countries even in non Ubuntu Linux distributions.</p>
+<p><picture><source type="image/avif" srcset="/blog/linux-support/r-X4SemT9T-564.avif 564w"><source type="image/webp" srcset="/blog/linux-support/r-X4SemT9T-564.webp 564w"><img loading="lazy" decoding="async" src="/blog/linux-support/r-X4SemT9T-564.png" alt="Fontrapak snap use" width="564" height="487"></picture></p>
+<p>However many Linux users express their unwillingness in using snaps, reasons being</p>
+<ul>
+<li>Snap is disabled or cumbersome to set up in some distribution.</li>
+<li>They are not ok with propietory store backend and tracking associated with snap packages.</li>
+<li>They don't like the mandatory update feature of snap packages.</li>
+<li>Installing snap package requires <em>sudo</em> previlege, all user may not have that.</li>
+<li>Big memory footprint of mounted snaps even when not in use.</li>
+</ul>
+<p>All those factors were limiting use of Fontra snap in desktop Linux.</p>
+<h2 id="fontrapak-flatpak">Fontrapak Flatpak</h2>
+<p>So a flatpak wrapper is made around the same pyinstaller binary and is available for download from <a href="https://github.com/mitradranirban/fontrapak-flatpak/releases">this github project</a>.</p>
+<ul>
+<li>To install, open a terminal and change to the directory where you downloaded the flatpak</li>
+</ul>
+<p><code>cd path/to/downloaded/fontra-pak.flatpak</code></p>
+<ul>
+<li>To download dependancies enable flathub repository</li>
+</ul>
+<p><code>flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo</code></p>
+<ul>
+<li>Install the fontra-pak flatpak, either system wise or for the current user only</li>
+</ul>
+<pre><code>flatpak install fontra-pak.flatpak
+</code></pre>
+<ul>
+<li>Now search for FontraPak in Applications and click on the Fontra icon.</li>
+</ul>
+<p><picture><source type="image/avif" srcset="/blog/linux-support/4TGHLyiECl-838.avif 838w"><source type="image/webp" srcset="/blog/linux-support/4TGHLyiECl-838.webp 838w"><img loading="lazy" decoding="async" src="/blog/linux-support/4TGHLyiECl-838.png" alt="flatpak launcher" width="838" height="627"></picture></p>
+<h2 id="using-fontra-pak-in-linux">Using Fontra Pak in Linux</h2>
+<p>All the above method will open the Fontra Pak window.</p>
+<p><picture><source type="image/avif" srcset="/blog/linux-support/MJnrYa1IB--838.avif 838w"><source type="image/webp" srcset="/blog/linux-support/MJnrYa1IB--838.webp 838w"><img loading="lazy" decoding="async" src="/blog/linux-support/MJnrYa1IB--838.png" alt="Fontra Pak Window" width="838" height="627"></picture></p>
+<p>After that the user can:</p>
+<ul>
+<li>Click on the Documentation Button to read the documentation</li>
+<li>Click on the New Font... Button to create a new font</li>
+<li>Drag or drop any of the supported format of file from your file manager on to the Fontrapak window.</li>
+</ul>
+<p>A local browser window will open and fonts can be viewed or edited (in case of writable formats) in the browser window. A font can be generated from the browser interface.</p>
+<p>Remember, due to sandboxing nature of snap apps, it can accesss files only in the user's home directory.</p>
+<h3 id="updating-fontra-in-linux">Updating Fontra in Linux</h3>
+<p>Snap packages are automatically updated. If it is not, you can update with the command
+<code>sudo snap refresh fontrapak</code></p>
+<p>To update pre-compiled pyinstaller binary or Flatpak just visit the repository form where you downloaded and download and install the latest version.</p>
+<h2 id="some-backstory-and-how-i-got-involved">Some backstory, and how I got involved</h2>
+<p>I am a physician by training and profession, I took up making fonts as a hobby as part of <a href="https://opensource.com/article/20/7/linux-bengali">an initiative to enable Bengali in Linux</a>. For more than 20 years, I have been using fontforge as my only font editor, and being an amateur, it was sufficient for my font making. About a year ago, in July 2024, I came across a youtube video about making a variable font using fontforge. I got interested in variable font technology and started making a very simple <a href="https://github.com/mitradranirban/samaano-fonts">variable font with rectancular components</a> using Fontforge. However it was very difficult to use a tool for a job it was not meant to be. So I frequently faced difficulties. Using a commercial font editor was out of question as it is a hobby project and I needed something that would work in my Ubuntu workstation as I have stopped using Windows since 2017.</p>
+<p>Then I came to know about Fontra. I cloned the repository and started using Fontra. It was a refreshing user interface compared to age old UI of Fontforge. My novice-level questions were quickly answered by Just van Rossum. But though I was using Fontra to edit the glyph, I was using fontmake to compile the font. Problem arose when I made a font with variable component which fontmake failed to compile. Just suggested that I can use Fontra Pak to export the font which will take care of the variable components. So I compiled FontraPak and started using it.</p>
+<h3 id="snapping-the-pak">Snapping the Pak</h3>
+<p>In an <a href="https://typo.social/@fontra/114262871554026245">conversation in mastodon about Fontra</a>, Just suggested if community contributes to making Linux app, he would gladly incorporate it, as he can not test in Linux himself. I read about snap packaging, searched the snapcraft forum , and tried my hand in making the snap.</p>
+<h4 id="trials-and-tribulations">Trials and Tribulations</h4>
+<p>My lack of a programming background was a big hindrance to create an effective solution. I also found there are few knowlegable volunteers left in the forum who could guide me in the process. So I look help of Large Language Model (LLM) chatbots. But LLMs often produced outdated or plain wrong code. Coding with them seemed to me like a blind showing the road to another. Moreover due to network congestion and instability in our area, I had difficulty in building locally, so used ubuntu launchpad and github bulder. I also undertook a strategy of debugging the code of one LLM with another, as though they could not find fault in their own code, they seemed expert in picking up fault in code generated by another LLM. And by feeding the build error code helped in gradually correcting the packaging errors. Finally the snap was published in snap store on 4th of April.</p>
+<p>Despite not using Linux themselves, Fontra develeopers, particularly Just van Rossum, always encouraged my endevour, so I was able to automate the snap generation by Github actions. Now nightly build was automatically packed in the edge channel of snap store.</p>
+<h3 id="flattening-the-pak">Flattening the Pak</h3>
+<p>I got feedback from some users that snap &quot;is not just the right thing&quot; for a free software. As indicated above, a flatpak would be a better solution. I wanted to build the Fontra flatpak from source but even with the help of LLMs like Github Copilot could not correct the errors, and finally I gave up. So I took the same shortcut as that of the snap package, of creating a flatplak wrapper around the pyinstaller binary, that will provide the necessary dependancy, also providing a simple way to install and launch the app in Linux desktop.</p>
+<h3 id="future-of-fontra-in-linux">Future of Fontra in Linux</h3>
+<p>I found out pyinstaller compilation is unnecessary in Linux. If all the requirements are installed in a python virtual environment in downloaded fontra-pak directory, the FontraPakMain.py script can be directly run from the venv and it has a smaller memory footprint.</p>
+<p><picture><source type="image/avif" srcset="/blog/linux-support/h8V_dBUzeA-1345.avif 1345w"><source type="image/webp" srcset="/blog/linux-support/h8V_dBUzeA-1345.webp 1345w"><img loading="lazy" decoding="async" src="/blog/linux-support/h8V_dBUzeA-1345.png" alt="Fontra Pak without pyinstaller" width="1345" height="608"></picture></p>
+<p>I tried this approach for both snap packaging and Flatpak initially but failed, either due to my inexperience or may be due to the sandbox environment in which snap and flatpak are generated.</p>
+<p>But it may be possible by an experienced python app packager to package Fontra Pak as a native app like <code>.deb</code> package (for Debian/Ubuntu/Mint etc) or a <code>.rpm</code> package (for Fedora/RHEL/Suse). It will also make it installble in Linux in non X86_64 architecture (Fontra in Raspberry Pi, anyone?).</p>
+<p>In future I expect Fontra to be in repository of all major Linux distributions. Any help in this regard will be highly solicited by both Fontra developers as well as Desktop Linux users who will get easy accesss to next generation of Free and Libre Font editor.</p>
+
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/march-update/">Fontra news for March</a></li>
+</ul>
+
+			</heading-anchors>
+		</main>
+
+		<footer>
+			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.1.2</a></em></p>
+		</footer>
+
+		<!-- This page `/blog/linux-support/` was built on 2025-08-25T10:37:21.413Z -->
+		<script type="module" src="/dist/xbxy_EL6cU.js"></script>
+	</body>
+</html>
