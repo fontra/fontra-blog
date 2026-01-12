@@ -28,6 +28,11 @@ export default async function (eleventyConfig) {
 		})
 		.addPassthroughCopy("./content/feed/pretty-atom-feed.xsl");
 
+	// Relative to the project root directory
+	eleventyConfig.addPassthroughCopy("content/**/*.mp4", {
+		mode: "html-relative",
+	});
+
 	// Run Eleventy when these files change:
 	// https://www.11ty.dev/docs/watch-serve/#add-your-own-watch-targets
 
