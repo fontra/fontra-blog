@@ -191,6 +191,10 @@ pre:not([class*="language-"]) {
 }
 code {
 	/* word-break: break-all; */
+	font-size: 0.85em;
+	background-color: #bbb3;
+	padding: 0.05em 0.15em 0.1em 0.15em;
+	border-radius: 0.3em;
 }
 
 /* Header */

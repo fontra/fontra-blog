@@ -5,11 +5,69 @@
   <subtitle>Posting about Fontra development.</subtitle>
   <link href="https://blog.fontra.xyz/feed/feed.xml" rel="self" />
   <link href="https://blog.fontra.xyz/" />
-  <updated>2025-08-25T00:00:00Z</updated>
+  <updated>2026-01-15T00:00:00Z</updated>
   <id>https://blog.fontra.xyz/</id>
   <author>
     <name>Fontra Team</name>
   </author>
+  <entry>
+    <title>Fontra in 2026, let&#39;s go!</title>
+    <link href="https://blog.fontra.xyz/blog/2026-lets-go/" />
+    <updated>2026-01-15T00:00:00Z</updated>
+    <id>https://blog.fontra.xyz/blog/2026-lets-go/</id>
+    <content type="html">&lt;p&gt;Hello, and welcome to a new Fontra blog post! It&#39;s been a while.&lt;/p&gt;
+&lt;h3 id=&quot;looking-back-at-2025&quot;&gt;Looking back at 2025&lt;/h3&gt;
+&lt;p&gt;The past year has been quite eventful. Black Foundry has been slowly dissolved, and funding for Fontra has had ups and downs. We managed to introduce a bunch of powerful new features, such as a font overview, a sidebearing tool and a kerning tool, to name just a few.&lt;/p&gt;
+&lt;p&gt;We heard more and more stories from educators who successfully used Fontra in their classes and workshops. Fontra being free and cross-platform have been important factors here.&lt;/p&gt;
+&lt;p&gt;In August, Fontra left the Google Fonts umbrella and we created an &lt;a href=&quot;https://github.com/fontra/&quot;&gt;independent GitHub organization&lt;/a&gt;, where all the source code repositories are now hosted.&lt;/p&gt;
+&lt;p&gt;We low-key feel that Fontra reached &amp;quot;1.0&amp;quot; during 2025, and in November we started issuing releases for &lt;a href=&quot;https://github.com/fontra/fontra-pak/releases&quot;&gt;Fontra Pak&lt;/a&gt;, instead of only providing nightly builds.&lt;/p&gt;
+&lt;p&gt;Linux support improved quite a bit thanks to initiatives from the community, especially from Anirban Mitra. In addition to a binary download for Linux, we now have support for the &lt;code&gt;flatpak&lt;/code&gt; distribution system.&lt;/p&gt;
+&lt;p&gt;Doing proper releases also allows us to be present in the &lt;code&gt;homebrew&lt;/code&gt; distribution system for macOS.&lt;/p&gt;
+&lt;p&gt;Looking back, despite some ups and downs, 2025 has been a great year for Fontra.&lt;/p&gt;
+&lt;h3 id=&quot;recent-developments&quot;&gt;Recent developments&lt;/h3&gt;
+&lt;p&gt;The font overview was significantly improved:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You can now select a range of glyphs by click-dragging over the cells. The shift key and the command/meta key can be used to refine the selection.&lt;/li&gt;
+&lt;li&gt;It is now possible to copy/paste and delete (multiple) glyphs. With undo/redo.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;Selecting multiple glyphs and deleting them:&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;video src=&quot;https://blog.fontra.xyz/blog/2026-lets-go/delete-multiple-glyphs.mp4&quot; controls=&quot;controls&quot; loop=&quot;&quot; muted=&quot;&quot;&gt;&lt;/video&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Copying and pasting a range of glyphs:&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;video src=&quot;https://blog.fontra.xyz/blog/2026-lets-go/copy-paste-multiple-glyphs.mp4&quot; controls=&quot;controls&quot; loop=&quot;&quot; muted=&quot;&quot;&gt;&lt;/video&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Copying a single glyph and pasting it into a range of glyphs:&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;video src=&quot;https://blog.fontra.xyz/blog/2026-lets-go/paste-single-into-multiple.mp4&quot; controls=&quot;controls&quot; loop=&quot;&quot; muted=&quot;&quot;&gt;&lt;/video&gt;&lt;/p&gt;
+&lt;h4 id=&quot;responding-to-external-changes&quot;&gt;Responding to external changes&lt;/h4&gt;
+&lt;p&gt;An important goal for Fontra is to be able to work side-by-side with other font editors. For example, Fontra is usable as a secondary viewer while working in a different application. So it needs to respond to changes on disk made by those other applications. This worked reasonable well for glyph changes in &lt;code&gt;.ufo&lt;/code&gt; files and changes in &lt;code&gt;.designspace&lt;/code&gt; files.&lt;/p&gt;
+&lt;p&gt;This automatic reload functionality has recently been greatly improved for the &lt;code&gt;.ufo&lt;/code&gt; format: Fontra now responds to external changes in kerning, groups, features and font info.&lt;/p&gt;
+&lt;p&gt;But, even more excitingly, we added automatic reload support for the following formats:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;.glyphs&lt;/code&gt; and &lt;code&gt;.glyphspackage&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.fontra&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.ttf&lt;/code&gt;, &lt;code&gt;.otf&lt;/code&gt;, &lt;code&gt;.woff&lt;/code&gt;, &lt;code&gt;.woff2&lt;/code&gt; and &lt;code&gt;.ttx&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Read-only support for the &lt;code&gt;.ttx&lt;/code&gt; format was recently added.&lt;/p&gt;
+&lt;h3 id=&quot;less-recent-developments&quot;&gt;Less recent developments&lt;/h3&gt;
+&lt;p&gt;There is a new sidebearing tool with which you can edit sidebearings interactively:&lt;/p&gt;
+&lt;p&gt;&lt;video src=&quot;https://blog.fontra.xyz/blog/2026-lets-go/sidebearing-tool.mp4&quot; controls=&quot;controls&quot; loop=&quot;&quot; muted=&quot;&quot;&gt;&lt;/video&gt;&lt;/p&gt;
+&lt;p&gt;As well as a new kerning tool:&lt;/p&gt;
+&lt;p&gt;&lt;video src=&quot;https://blog.fontra.xyz/blog/2026-lets-go/kerning-tool.mp4&quot; controls=&quot;controls&quot; loop=&quot;&quot; muted=&quot;&quot;&gt;&lt;/video&gt;&lt;/p&gt;
+&lt;p&gt;The transformation panel got a new set editable dimensions fields, where you can see but also edit the width and height of the current selection:&lt;/p&gt;
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://blog.fontra.xyz/blog/2026-lets-go/SI0o_VzWAr-1308.avif 1308w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://blog.fontra.xyz/blog/2026-lets-go/SI0o_VzWAr-1308.webp 1308w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://blog.fontra.xyz/blog/2026-lets-go/SI0o_VzWAr-1308.png&quot; alt=&quot;A screen shot of Fontra, highlighting the editable dimensions fields.&quot; width=&quot;1308&quot; height=&quot;1036&quot;&gt;&lt;/picture&gt;
+&lt;h3 id=&quot;looking-forward-to-2026&quot;&gt;Looking forward to 2026&lt;/h3&gt;
+&lt;p&gt;2026 is looking very good so far: we&#39;ve secured some more funding and there are some exciting new features planned.&lt;/p&gt;
+&lt;p&gt;The next big project to work on will be live OpenType feature previewing, with proper text shaping and right-to-left support. This will involve the fantastic HarfBuzz library.&lt;/p&gt;
+&lt;p&gt;Another big thing will be support for scripting and plugins, so people can write their own tools that integrate with Fontra.&lt;/p&gt;
+&lt;p&gt;The user documentation has been neglected a bit, and we will work to get that back on track.&lt;/p&gt;
+&lt;p&gt;In April, the &lt;a href=&quot;https://fontstand.com/conference/2026&quot;&gt;Fontstand conference&lt;/a&gt; will host a Fontra workshop led by Just van Rossum.&lt;/p&gt;
+&lt;p&gt;Please keep in touch with us via the usual channels:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://typo.social/@fontra&quot;&gt;Mastodon&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://discord.gg/SeZWugEYzd&quot;&gt;Discord&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/fontra&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.instagram.com/fontra_editor&quot;&gt;Instagram&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
   <entry>
     <title>Fontra on Linux</title>
     <link href="https://blog.fontra.xyz/blog/linux-support/" />

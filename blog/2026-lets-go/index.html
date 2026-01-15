@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Welcome to the Fontra blog! A brief history of the project.</title>
-		<meta name="description" content="A brief history of the project">
+		<title>Fontra in 2026, let&#39;s go!</title>
+		<meta name="description" content="Fontra in 2026, let&#39;s go! Reflecting on 2025, highlighting recent developments, looking ahead towards 2026">
 		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Fontra Blog">
 		<link rel="me" href="https://typo.social/@fontra">
 		
@@ -509,54 +509,66 @@ h6 {
 		<main id="skip">
 			<heading-anchors>
 				
-<h1 id="welcome-to-the-fontra-blog-a-brief-history-of-the-project">Welcome to the Fontra blog! A brief history of the project.</h1>
+<h1 id="fontra-in-2026-lets-go">Fontra in 2026, let&#39;s go!</h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2025-01-29">29 January 2025</time></li>
+	<li><time datetime="2026-01-15">15 January 2026</time></li>
 	<li><a href="/tags/fontra/" class="post-tag">fontra</a></li>
 </ul>
 
-<p>It was long overdue, but here it is – a blog dedicated to Fontra. We will write about new features, work in progress, and future plans. But first: let's recap what happened previously, and summarize the current state of Fontra.</p>
-<p>We have come a long way, and it has been quite the trip already. The first commit to git was done on 14 November 2021. The initial name for the project was &quot;Trafo&quot;, but on the second day everything got renamed to &quot;Fontra&quot;, after our colleague Fabio Caccamo suggested it.</p>
-<p>Fontra started as a proof of concept. We needed fast live interpolation of (deeply) nested variable components, good support for large character sets (tens of thousands glyphs), and low friction collaboration within a medium-sized (up to 15 designers simultaneously) team. These requirements were informed by ongoing custom CJK (Chinese, Japanese, Korean) type-designs at Black Foundry. We needed new tools for this, and we considered these three options:</p>
+<p>Hello, and welcome to a new Fontra blog post! It's been a while.</p>
+<h3 id="looking-back-at-2025">Looking back at 2025</h3>
+<p>The past year has been quite eventful. Black Foundry has been slowly dissolved, and funding for Fontra has had ups and downs. We managed to introduce a bunch of powerful new features, such as a font overview, a sidebearing tool and a kerning tool, to name just a few.</p>
+<p>We heard more and more stories from educators who successfully used Fontra in their classes and workshops. Fontra being free and cross-platform have been important factors here.</p>
+<p>In August, Fontra left the Google Fonts umbrella and we created an <a href="https://github.com/fontra/">independent GitHub organization</a>, where all the source code repositories are now hosted.</p>
+<p>We low-key feel that Fontra reached &quot;1.0&quot; during 2025, and in November we started issuing releases for <a href="https://github.com/fontra/fontra-pak/releases">Fontra Pak</a>, instead of only providing nightly builds.</p>
+<p>Linux support improved quite a bit thanks to initiatives from the community, especially from Anirban Mitra. In addition to a binary download for Linux, we now have support for the <code>flatpak</code> distribution system.</p>
+<p>Doing proper releases also allows us to be present in the <code>homebrew</code> distribution system for macOS.</p>
+<p>Looking back, despite some ups and downs, 2025 has been a great year for Fontra.</p>
+<h3 id="recent-developments">Recent developments</h3>
+<p>The font overview was significantly improved:</p>
 <ul>
-<li>A new extension for RoboFont (a faster successor to our RoboCJK extension)</li>
-<li>A new cross-platform desktop application (using Qt or wxWidgets)</li>
-<li>A web application + custom server</li>
+<li>You can now select a range of glyphs by click-dragging over the cells. The shift key and the command/meta key can be used to refine the selection.</li>
+<li>It is now possible to copy/paste and delete (multiple) glyphs. With undo/redo.</li>
 </ul>
-<p>We were already using a server with a SQL database to enable smooth collaboration of the team on large scale (CJK) projects), coupled with a RoboFont extension for glyph editing.
-A cross-platform solution was to be preferred, and indeed web-browsers are by definition cross-platform, why not build on top of that!</p>
-<p>OpenType 1.8 (2016) brought the Variable Font format to the real world, and type-designers had been drawing with several masters (or sources) for a while already: it seemed important to us that the font editor would take these multiple-masters considerations from its very foundations. In other words: we envisioned a  &quot;variable first&quot; approach to font editing.</p>
-<p>Some informal trials with JavaScript, HTML and CSS quickly had very positive results – both in terms of potential performance, as well as in developer experience. JavaScript has come a long way since the nineties! Additionally, modern web standards are very powerful and remarkably easy to use. It seemed like a solid choice. Just van Rossum’s long experience with coding in the realm of typography (TTX,  FontTools, FontGoggles) helped to develop a vision and architecture for a new, browser-based font editor, even though he had to learn new skills for the web platform.</p>
-<p>We went from cautious first experimental steps to &quot;proper&quot; development rather quickly, since every step along the way confirmed that we were on the right track to achieve our goals.</p>
-<h3 id="where-are-we-now">Where are we now?</h3>
-<p>In early 2025, Fontra is a near-feature-complete font editor.</p>
-<p>Highlights include:</p>
+<p><em>Selecting multiple glyphs and deleting them:</em></p>
+<p><video src="delete-multiple-glyphs.mp4" controls="controls" loop="" muted=""></video></p>
+<p><em>Copying and pasting a range of glyphs:</em></p>
+<p><video src="copy-paste-multiple-glyphs.mp4" controls="controls" loop="" muted=""></video></p>
+<p><em>Copying a single glyph and pasting it into a range of glyphs:</em></p>
+<p><video src="paste-single-into-multiple.mp4" controls="controls" loop="" muted=""></video></p>
+<h4 id="responding-to-external-changes">Responding to external changes</h4>
+<p>An important goal for Fontra is to be able to work side-by-side with other font editors. For example, Fontra is usable as a secondary viewer while working in a different application. So it needs to respond to changes on disk made by those other applications. This worked reasonable well for glyph changes in <code>.ufo</code> files and changes in <code>.designspace</code> files.</p>
+<p>This automatic reload functionality has recently been greatly improved for the <code>.ufo</code> format: Fontra now responds to external changes in kerning, groups, features and font info.</p>
+<p>But, even more excitingly, we added automatic reload support for the following formats:</p>
 <ul>
-<li>Create fonts from scratch</li>
-<li>Read and write various font source formats</li>
-<li>Read various binary font formats</li>
-<li>Export (variable) TrueType and OpenType</li>
-<li>Add/delete glyphs</li>
-<li>Draw/modify glyphs</li>
-<li>Strong support for (variable) components</li>
-<li>Live interpolation</li>
-<li>Edit the font's designspace (variation axes, etc.)</li>
-<li>Perform glyph edits across multiple sources (masters) simultaneously</li>
-<li>A font overview with support for preset and custom glyph sets, powerful grouping options</li>
-<li>Server to collaborate with a team online</li>
+<li><code>.glyphs</code> and <code>.glyphspackage</code></li>
+<li><code>.fontra</code></li>
+<li><code>.ttf</code>, <code>.otf</code>, <code>.woff</code>, <code>.woff2</code> and <code>.ttx</code></li>
 </ul>
-<p>Some stats from our main repository on GitHub:</p>
+<p>Read-only support for the <code>.ttx</code> format was recently added.</p>
+<h3 id="less-recent-developments">Less recent developments</h3>
+<p>There is a new sidebearing tool with which you can edit sidebearings interactively:</p>
+<p><video src="sidebearing-tool.mp4" controls="controls" loop="" muted=""></video></p>
+<p>As well as a new kerning tool:</p>
+<p><video src="kerning-tool.mp4" controls="controls" loop="" muted=""></video></p>
+<p>The transformation panel got a new set editable dimensions fields, where you can see but also edit the width and height of the current selection:</p>
+<picture><source type="image/avif" srcset="/blog/2026-lets-go/SI0o_VzWAr-1308.avif 1308w"><source type="image/webp" srcset="/blog/2026-lets-go/SI0o_VzWAr-1308.webp 1308w"><img loading="lazy" decoding="async" src="/blog/2026-lets-go/SI0o_VzWAr-1308.png" alt="A screen shot of Fontra, highlighting the editable dimensions fields." width="1308" height="1036"></picture>
+<h3 id="looking-forward-to-2026">Looking forward to 2026</h3>
+<p>2026 is looking very good so far: we've secured some more funding and there are some exciting new features planned.</p>
+<p>The next big project to work on will be live OpenType feature previewing, with proper text shaping and right-to-left support. This will involve the fantastic HarfBuzz library.</p>
+<p>Another big thing will be support for scripting and plugins, so people can write their own tools that integrate with Fontra.</p>
+<p>The user documentation has been neglected a bit, and we will work to get that back on track.</p>
+<p>In April, the <a href="https://fontstand.com/conference/2026">Fontstand conference</a> will host a Fontra workshop led by Just van Rossum.</p>
+<p>Please keep in touch with us via the usual channels:</p>
 <ul>
-<li>541 stars</li>
-<li>17 contributors</li>
-<li>10k+ commits</li>
-<li>1147 closed pull requests</li>
-<li>614 closed issues</li>
+<li><a href="https://typo.social/@fontra">Mastodon</a></li>
+<li><a href="https://discord.gg/SeZWugEYzd">Discord</a></li>
+<li><a href="https://github.com/fontra">GitHub</a></li>
+<li><a href="https://www.instagram.com/fontra_editor">Instagram</a></li>
 </ul>
-<p>We still have important work left to do, and in this blog we will regularly keep you up to date with the latest developments. Please follow along with our mission to make Fontra an excellent font editor!</p>
 
-<ul class="links-nextprev"><li class="links-nextprev-next">Next →<br><a href="/blog/font-overview/">Fontra news for January – Font Overview</a></li>
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/linux-support/">Fontra on Linux</a></li>
 </ul>
 
 			</heading-anchors>
@@ -566,7 +578,7 @@ A cross-platform solution was to be preferred, and indeed web-browsers are by de
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.1.2</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/introduction/` was built on 2026-01-15T10:18:13.095Z -->
+		<!-- This page `/blog/2026-lets-go/` was built on 2026-01-15T10:18:13.096Z -->
 		<script type="module" src="/dist/cC8wS6ZjFU.js"></script>
 	</body>
 </html>
