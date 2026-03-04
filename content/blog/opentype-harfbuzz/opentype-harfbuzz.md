@@ -6,13 +6,15 @@ tags: fontra, opentype, harfbuzz
 ---
 ## Intro
 
-I may be slightly biased, but I think this news is pretty huge: Fontra can finally do proper [text shaping](https://en.wikipedia.org/wiki/Text_shaping) and show OpenType features! This includes support for right-to-left scripts, but vertical writing will have to wait for a future update.
+I may be slightly biased, but I think this news is pretty huge: Fontra can finally do proper [text shaping](https://en.wikipedia.org/wiki/Text_shaping) and show OpenType features! This includes support for right-to-left scripts.
 
-OpenType features are nice and useful for simple scripts such as Latin, and add important typographic refinements (for example kerning or small caps) but in many cases, text still “works” if OpenType features are not available. Not so for non-simple scripts such as Arabic and Indic scripts, where text shaping and OpenType features are absolutely required for text to become readable at all.
+OpenType features are nice and useful for simple scripts such as Latin, and can add important typographic refinements (for example kerning or small caps) but in many cases, text still “works” if OpenType features are not available. Not so for non-simple scripts like Arabic and Indic scripts, where text shaping and OpenType features are absolutely required for text to become readable at all.
+
+So yes, for Fontra to add support for text shaping and OpenType features is a rather big deal.
 
 Before I go into what this practically means for Fontra, I want to give a huge shoutout to [HarfBuzz](https://en.wikipedia.org/wiki/HarfBuzz), the popular open source library that implements the non-trivial steps to go from Unicode text to a sequence of glyph shapes and their positions, ready for visual rendering. Without HarfBuzz, none of Fontra's new functionality would be possible.
 
-Several aspects of the new functionality are loosely based on [FontGoggles](https://fontgoggles.org/), my macOS-only OpenType previewer application.
+Several aspects of the new functionality are loosely modeled after [FontGoggles](https://fontgoggles.org/), my macOS-only OpenType previewer application.
 
 ## Viewing text
 
@@ -52,7 +54,7 @@ There are up two three sections of feature toggles.
 
 1. **Substitution:** This section shows toggles for glyph substitution (GSUB) features. It only shows up if there are any substitution features.
 2. **Positioning from font data:** This section shows toggles for emulated positioning features. It always shows up if we are looking at source font data, and will then always show toggles for `curs`, `kern`, `mark` and `mkmk`. This is because it is currently non-trivial for Fontra to know if any of these emulated features may do something or not. This section does not appear when we are looking at binary fonts such as `.ttf`.
-3. **Positioning:** This section shows toggles for glyph positioning (GPOS) features such as `kern` or `mark`, as defined by a binary font or by the feature code in a source font. It only shows up if there are any positioning features.
+3. **Positioning:** This section shows toggles for glyph positioning (GPOS) features like `kern` or `mark`, as defined by a binary font or by the feature code in a source font. It only shows up if there are any positioning features.
 
 There are two types of feature toggles: on/off toggles, and on/off/unknown toggles. The latter type is used when HarfBuzz decides that a feature should be on or off, based on context or script. The initial state of on/off toggles reflects their default. For example `ccmp` is always on by default, but a stylistic set such as `ss01` will be off by default.
 
