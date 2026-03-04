@@ -2,9 +2,9 @@
 title: Text shaping and OpenType features
 description: Fontra now has live OpenType feature authoring and previewing, and supports proper text shaping
 date: 2026-03-03 # CHECK!
-tags: fontra, opentype, harfbuzz
+tags: ["fontra", "opentype", "harfbuzz"]
 ---
-## Intro
+## Introduction
 
 I may be slightly biased, but I think this news is pretty huge: Fontra can finally do proper [text shaping](https://en.wikipedia.org/wiki/Text_shaping) and show OpenType features! This includes support for right-to-left scripts.
 
