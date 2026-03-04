@@ -23,7 +23,7 @@ How OpenType features are treated depends on what kind of font we are looking at
 1. Binary files: `.ttf`, `.otf`, `.woff` or `.woff2`. Additionally, `.ttx` falls in this category, despite it not strictly being binary.
 2. Source files: `.designspace`, `.ufo`, `.glyphs`, `.glyphspackage` or `.fontra`.
 
-For binary files, Fontra will use the actual OpenType layout tables in the font (mainly `GSUB`, `GPOS` and `GDEF`). Thanks to HarfBuzz, Fontra's text rendering will match real-world use of the font.
+For binary files, Fontra will use the actual OpenType layout tables in the font (mainly `GSUB`, `GPOS` and `GDEF`). Thanks to HarfBuzz, Fontra's text rendering will match real-world usage of the font.
 
 For source files, Fontra looks at the feature code in the font, as well as kerning data and glyph anchors. With some caveats, Fontra will render text the same *as if the font were an actual TrueType or OpenType font*. I'll write about how this is achieved below.
 
@@ -34,7 +34,7 @@ For source files, Fontra looks at the feature code in the font, as well as kerni
 > - Use Fontra as a secondary viewer next to for example Glyphs or RoboFont. Save the font in the other application, and Fontra will automatically update its views.
 > - Use Fontra as a viewer for freshly generated OpenType or TrueType fonts. If the file gets regenerated, Fontra will automatically update its views.
 >
-> Note that Fontra can have multiple windows or tabs open for the same font. You can also manually duplicate a view by copying the URL, and pasting into a new browser tab.
+> Note that Fontra can have multiple windows or tabs open for the same font. You can manually duplicate a view by copying the URL, and pasting into a new browser tab.
 
 ## The Text Entry panel
 
@@ -66,9 +66,9 @@ This information is line-based, and will show the info for the line that contain
 
 The “Input characters” list contains a row per input character, showing a generic character, the Unicode code point, Unicode name, and the associated script. The order of the rows is the logical character order, meaning the first row shows the first character in the string. This will be the visually right-most one for right-to-left scripts.
 
-The “Output glyphs” list shows the glyphs in visual-left-to-right order, regardless of the writing direction of the input text. It shows the glyph name, advance width (and possible kerning) and x/y positioning offset, as well as the “cluster” index. The cluster index relates to the character index in the character list.
+The “Output glyphs” list shows the glyphs in visual-left-to-right order, regardless of the writing direction of the input text. It shows the glyph name, advance width (and possible kerning) and x/y positioning offset, as well as the “[cluster](https://harfbuzz.github.io/clusters.html)” index. The cluster index relates to the character index in the character list.
 
-Glyphs *and* characters can be grouped in “clusters”. The list selection will reflect this clustering. Clicking on a row in either list will select the associated row or rows in the other list. 
+Glyphs *and* characters can be grouped in [clusters](https://harfbuzz.github.io/clusters.html). The list selection will reflect this clustering. Clicking on a row in either list will select the associated row or rows in the other list.
 
 Fontra's editor view can currently only select a single glyph at a time, and when clicking on a *character row* that is associated with a *multiple-glyph cluster*, it will only select the *first glyph* of the cluster.
 
@@ -78,7 +78,7 @@ When we are working with source data (as opposed to binary, like `.ttf`), Fontra
 
 > Fontra Pak's “export as” functionality currently uses the `fontmake` font compiler for `.ttf` and `.otf` export, but will switch to `fontc` in the foreseeable future.
 
-Fontra hooks into the HarfBuzz machinery to emulate these generated features as good as possible.
+Fontra hooks into the HarfBuzz machinery to emulate these generated features as well as possible.
 
 ### Kerning
 
