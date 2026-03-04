@@ -8,11 +8,11 @@ tags: fontra, opentype, harfbuzz
 
 I may be slightly biased, but I think this news is pretty huge: Fontra can finally do proper [text shaping](https://en.wikipedia.org/wiki/Text_shaping) and show OpenType features! This includes support for right-to-left scripts.
 
-OpenType features are nice and useful for simple scripts such as Latin, and can add important typographic refinements (for example kerning or small caps) but in many cases, text still “works” if OpenType features are not available. Not so for non-simple scripts like Arabic and Indic scripts, where text shaping and OpenType features are absolutely required for text to become readable at all.
+OpenType features are nice and useful for simple scripts such as Latin, and can add important typographic refinements (for example kerning or small caps) but in many cases, text still “works” if OpenType features are not available. Not so for [non-simple scripts](https://en.wikipedia.org/wiki/Complex_text_layout) like Arabic and Devanagari, where text shaping and OpenType features are absolutely required for text to become readable at all.
 
-So yes, for Fontra to add support for text shaping and OpenType features is a rather big deal.
+So yes, for Fontra to add text shaping capabilities is a rather big deal.
 
-Before I go into what this practically means for Fontra, I want to give a huge shoutout to [HarfBuzz](https://en.wikipedia.org/wiki/HarfBuzz), the popular open source library that implements the non-trivial steps to go from Unicode text to a sequence of glyph shapes and their positions, ready for visual rendering. Without HarfBuzz, none of Fontra's new functionality would be possible.
+Before I go into what this practically means, I want to give a huge shoutout to [HarfBuzz](https://en.wikipedia.org/wiki/HarfBuzz), the popular open source library that implements the non-trivial steps to go from Unicode text to a sequence of glyph shapes and their positions, ready for visual rendering. Without HarfBuzz, none of Fontra's new functionality would be possible.
 
 Several aspects of the new functionality are loosely modeled after [FontGoggles](https://fontgoggles.org/), my macOS-only OpenType previewer application.
 
@@ -215,3 +215,5 @@ As usual, please follow Fontra, and keep in touch with us via any of these chann
 - [Discord](https://discord.gg/SeZWugEYzd)
 - [GitHub](https://github.com/fontra)
 - [Instagram](https://www.instagram.com/fontra_editor)
+
+*— Just van Rossum*
