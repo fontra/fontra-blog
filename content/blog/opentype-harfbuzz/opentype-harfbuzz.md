@@ -201,7 +201,7 @@ I would like to take this moment to thank Google Fonts, Dave Crossland, The Font
 There is always more to do... In the context of the new OpenType support, there are some followup items:
 
 - Support text segmenting (so HarfBuzz can apply the correct features to text runs in different scripts)
-- Support bidirection text, so we can mix left-to-right and right-to-left text runs correctly
+- Support [bidirectional text](https://en.wikipedia.org/wiki/Bidirectional_text), so we can mix left-to-right and right-to-left text runs correctly
 - Support vertical text layout
 
 Outside of OpenType functionality, these are the next high-priority features:
