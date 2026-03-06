@@ -1,7 +1,7 @@
 ---
 title: Text shaping and OpenType features
 description: Fontra now has live OpenType feature authoring and previewing, and supports proper text shaping
-date: 2026-03-03 # CHECK!
+date: 2026-03-06
 tags: ["fontra", "OpenType", "HarfBuzz"]
 ---
 ## Introduction
