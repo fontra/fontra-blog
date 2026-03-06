@@ -5,11 +5,174 @@
   <subtitle>Posting about Fontra development.</subtitle>
   <link href="https://blog.fontra.xyz/feed/feed.xml" rel="self" />
   <link href="https://blog.fontra.xyz/" />
-  <updated>2026-01-15T00:00:00Z</updated>
+  <updated>2026-03-06T00:00:00Z</updated>
   <id>https://blog.fontra.xyz/</id>
   <author>
     <name>Fontra Team</name>
   </author>
+  <entry>
+    <title>Text shaping and OpenType features</title>
+    <link href="https://blog.fontra.xyz/blog/opentype-harfbuzz/" />
+    <updated>2026-03-06T00:00:00Z</updated>
+    <id>https://blog.fontra.xyz/blog/opentype-harfbuzz/</id>
+    <content type="html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;I may be slightly biased, but I think this news is pretty huge: Fontra can finally do proper &lt;a href=&quot;https://en.wikipedia.org/wiki/Text_shaping&quot;&gt;text shaping&lt;/a&gt; and show OpenType features! This includes support for right-to-left scripts.&lt;/p&gt;
+&lt;p&gt;OpenType features are nice and useful for simple scripts such as Latin, and can add important typographic refinements (for example kerning or small caps) but in many cases, text still “works” if OpenType features are not available. Not so for &lt;a href=&quot;https://en.wikipedia.org/wiki/Complex_text_layout&quot;&gt;non-simple scripts&lt;/a&gt; like Arabic and Devanagari, where text shaping and OpenType features are absolutely required for text to become readable at all.&lt;/p&gt;
+&lt;p&gt;So yes, for Fontra to add text shaping capabilities is a rather big deal.&lt;/p&gt;
+&lt;p&gt;Before I go into what this practically means, I want to give a huge shoutout to &lt;a href=&quot;https://en.wikipedia.org/wiki/HarfBuzz&quot;&gt;HarfBuzz&lt;/a&gt;, the popular open source library that implements the non-trivial steps to go from Unicode text to a sequence of glyph shapes and their positions, ready for visual rendering. Without HarfBuzz, none of Fontra&#39;s new functionality would be possible.&lt;/p&gt;
+&lt;p&gt;Several aspects of the new functionality are loosely modeled after &lt;a href=&quot;https://fontgoggles.org/&quot;&gt;FontGoggles&lt;/a&gt;, my macOS-only OpenType previewer application.&lt;/p&gt;
+&lt;h2 id=&quot;viewing-text&quot;&gt;Viewing text&lt;/h2&gt;
+&lt;p&gt;How OpenType features are treated depends on what kind of font we are looking at. Fontra distinguishes between two categories of font files:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Binary files: &lt;code&gt;.ttf&lt;/code&gt;, &lt;code&gt;.otf&lt;/code&gt;, &lt;code&gt;.woff&lt;/code&gt; or &lt;code&gt;.woff2&lt;/code&gt;. Additionally, &lt;code&gt;.ttx&lt;/code&gt; falls in this category, despite it not strictly being binary.&lt;/li&gt;
+&lt;li&gt;Source files: &lt;code&gt;.designspace&lt;/code&gt;, &lt;code&gt;.ufo&lt;/code&gt;, &lt;code&gt;.glyphs&lt;/code&gt;, &lt;code&gt;.glyphspackage&lt;/code&gt; or &lt;code&gt;.fontra&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For binary files, Fontra will use the actual OpenType layout tables in the font (mainly &lt;code&gt;GSUB&lt;/code&gt;, &lt;code&gt;GPOS&lt;/code&gt; and &lt;code&gt;GDEF&lt;/code&gt;). Thanks to HarfBuzz, Fontra&#39;s text rendering will match real-world usage of the font.&lt;/p&gt;
+&lt;p&gt;For source files, Fontra looks at the feature code in the font, as well as kerning data and glyph anchors. With some caveats, Fontra will render text the same &lt;em&gt;as if the font were an actual TrueType or OpenType font&lt;/em&gt;. I&#39;ll write about how this is achieved below.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h4 id=&quot;using-fontra-as-an-external-viewer&quot;&gt;Using Fontra as an external viewer&lt;/h4&gt;
+&lt;p&gt;For any of the supported file types, Fontra can be used as a secondary viewer:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use Fontra as a secondary viewer next to for example Glyphs or RoboFont. Save the font in the other application, and Fontra will automatically update its views.&lt;/li&gt;
+&lt;li&gt;Use Fontra as a viewer for freshly generated OpenType or TrueType fonts. If the file gets regenerated, Fontra will automatically update its views.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note that Fontra can have multiple windows or tabs open for the same font. You can manually duplicate a view by copying the URL, and pasting into a new browser tab.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;the-text-entry-panel&quot;&gt;The Text Entry panel&lt;/h2&gt;
+&lt;p&gt;In Fontra&#39;s editor view, the user can change the displayed text using the Text Entry panel. This used to be a rather sparsely populated sidebar panel with just a text entry field, a visual alignment control, and a checkbox to toggle kerning on or off.&lt;/p&gt;
+&lt;p&gt;In the new version, the kerning checkbox has been replaced with several new Accordion sections that allow the user to control details about text layout. It starts with a checkbox named “Apply text shaping and features”. This is on by default, and tells Fontra to use HarfBuzz for text shaping and features. Turning this checkbox off will disable HarfBuzz.&lt;/p&gt;
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://blog.fontra.xyz/blog/opentype-harfbuzz/84jIJ7MnI7-3356.avif 3356w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://blog.fontra.xyz/blog/opentype-harfbuzz/84jIJ7MnI7-3356.webp 3356w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://blog.fontra.xyz/blog/opentype-harfbuzz/84jIJ7MnI7-3356.png&quot; alt=&quot;A Screenshot of Fontra&#39;s editor view, showing the redesigned Text Entry panel, a string of Arabic characters, and the new &#39;Input characters and output glyphs&#39; panel&quot; width=&quot;3356&quot; height=&quot;1554&quot;&gt;&lt;/picture&gt;
+&lt;p&gt;The text entry field automatically detects whether the entered text is right-to-left or left-to-right.&lt;/p&gt;
+&lt;p&gt;The rest of the controls in this panel offer overrides for writing direction, script and language, as well as feature toggles for individual substitution and positioning features.&lt;/p&gt;
+&lt;h3 id=&quot;feature-toggles&quot;&gt;Feature toggles&lt;/h3&gt;
+&lt;p&gt;There are up two three sections of feature toggles.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Substitution:&lt;/strong&gt; This section shows toggles for glyph substitution (GSUB) features. It only shows up if there are any substitution features.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Positioning from font data:&lt;/strong&gt; This section shows toggles for emulated positioning features. It always shows up if we are looking at source font data, and will then always show toggles for &lt;code&gt;curs&lt;/code&gt;, &lt;code&gt;kern&lt;/code&gt;, &lt;code&gt;mark&lt;/code&gt; and &lt;code&gt;mkmk&lt;/code&gt;. This is because it is currently non-trivial for Fontra to know if any of these emulated features may do something or not. This section does not appear when we are looking at binary fonts such as &lt;code&gt;.ttf&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Positioning:&lt;/strong&gt; This section shows toggles for glyph positioning (GPOS) features like &lt;code&gt;kern&lt;/code&gt; or &lt;code&gt;mark&lt;/code&gt;, as defined by a binary font or by the feature code in a source font. It only shows up if there are any positioning features.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;There are two types of feature toggles: on/off toggles, and on/off/unknown toggles. The latter type is used when HarfBuzz decides that a feature should be on or off, based on context or script. The initial state of on/off toggles reflects their default. For example &lt;code&gt;ccmp&lt;/code&gt; is always on by default, but a stylistic set such as &lt;code&gt;ss01&lt;/code&gt; will be off by default.&lt;/p&gt;
+&lt;h2 id=&quot;inspecting-the-input-characters-and-output-glyphs&quot;&gt;Inspecting the input characters and output glyphs&lt;/h2&gt;
+&lt;p&gt;There is a new panel in the right sidebar called “Input characters and output glyphs” where we can inspect the Unicode input text as well as the glyph information used to render the final string.&lt;/p&gt;
+&lt;p&gt;This information is line-based, and will show the info for the line that contains the selected glyph, or for the first line if no glyph has been selected yet. It will stick to the line of the last selected glyph even if you deselect it by clicking elsewhere.&lt;/p&gt;
+&lt;p&gt;The “Input characters” list contains a row per input character, showing a generic character, the Unicode code point, Unicode name, and the associated script. The order of the rows is the logical character order, meaning the first row shows the first character in the string. This will be the visually right-most one for right-to-left scripts.&lt;/p&gt;
+&lt;p&gt;The “Output glyphs” list shows the glyphs in visual-left-to-right order, regardless of the writing direction of the input text. It shows the glyph name, advance width (and possible kerning) and x/y positioning offset, as well as the “&lt;a href=&quot;https://harfbuzz.github.io/clusters.html&quot;&gt;cluster&lt;/a&gt;” index. The cluster index relates to the character index in the character list.&lt;/p&gt;
+&lt;p&gt;Glyphs &lt;em&gt;and&lt;/em&gt; characters can be grouped in &lt;a href=&quot;https://harfbuzz.github.io/clusters.html&quot;&gt;clusters&lt;/a&gt;. The list selection will reflect this clustering. Clicking on a row in either list will select the associated row or rows in the other list.&lt;/p&gt;
+&lt;p&gt;Fontra&#39;s editor view can currently only select a single glyph at a time, and when clicking on a &lt;em&gt;character row&lt;/em&gt; that is associated with a &lt;em&gt;multiple-glyph cluster&lt;/em&gt;, it will only select the &lt;em&gt;first glyph&lt;/em&gt; of the cluster.&lt;/p&gt;
+&lt;h3 id=&quot;editing-the-input-characters-list&quot;&gt;Editing the input characters list&lt;/h3&gt;
+&lt;p&gt;Double-clicking a character in the list pops up a character/glyph selection dialog, where you can choose a charcter of glyph to replace the selected character.&lt;/p&gt;
+&lt;p&gt;You can remove a selected character from the list by hitting the delete key.&lt;/p&gt;
+&lt;p&gt;Additionally you can right-click (or control-click) on a row in the character list, which will show a contextual menu with these items:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Replace this character&lt;/li&gt;
+&lt;li&gt;Insert character before this character&lt;/li&gt;
+&lt;li&gt;Insert character after this character&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Each will pop up a character/glyph selection dialog.&lt;/p&gt;
+&lt;h3 id=&quot;double-clicking-in-the-output-glyphs-list&quot;&gt;Double-clicking in the output glyphs list&lt;/h3&gt;
+&lt;p&gt;When you double-click on a glyph in the output glyphs list, the glyph will be put in edit mode in the canvas. If the glyph does not exist, a dialog will ask you whether you want to create it.&lt;/p&gt;
+&lt;h2 id=&quot;live-opentype-features&quot;&gt;Live OpenType features&lt;/h2&gt;
+&lt;p&gt;When we are working with source data (as opposed to binary, like &lt;code&gt;.ttf&lt;/code&gt;), Fontra emulates features that would usually be generated by a font compiler, such as &lt;code&gt;kern&lt;/code&gt; for kerning or &lt;code&gt;mark&lt;/code&gt; for mark-to-base attachments, among others.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Fontra Pak&#39;s “export as” functionality currently uses the &lt;code&gt;fontmake&lt;/code&gt; font compiler for &lt;code&gt;.ttf&lt;/code&gt; and &lt;code&gt;.otf&lt;/code&gt; export, but will switch to &lt;code&gt;fontc&lt;/code&gt; in the foreseeable future.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Fontra hooks into the HarfBuzz machinery to emulate these generated features as well as possible.&lt;/p&gt;
+&lt;h3 id=&quot;kerning&quot;&gt;Kerning&lt;/h3&gt;
+&lt;p&gt;The &lt;code&gt;kern&lt;/code&gt; feature will be emulated using the kerning data from the source font. Kerning data can be edited interactively with the Kerning tool, and the effects are immediately visible in the rendered text.&lt;/p&gt;
+&lt;p&gt;It is possible for manually written kerning feature code to co-exist with kerning data. More on that later.&lt;/p&gt;
+&lt;h3 id=&quot;mark-to-base-mark-to-mark-mark-to-ligature-positioning&quot;&gt;Mark-to-base, mark-to-mark, mark-to-ligature positioning&lt;/h3&gt;
+&lt;p&gt;So called “mark” features are derived from named glyph anchors. For example, if a base glyph such as &amp;quot;A&amp;quot; defines an anchor called &lt;code&gt;top&lt;/code&gt;, and there exists a combining accent glyph that has an anchor named &lt;code&gt;_top&lt;/code&gt; (the same name, but prefixed with an underscore), the font compiler will generate a &lt;code&gt;mark&lt;/code&gt; feature that will dynamically position the two glyphs based on their anchors. Fontra will emulate this behavior directly from the live glyph anchors, so the designer can see the effect of a change in real time.&lt;/p&gt;
+&lt;p&gt;&lt;video src=&quot;https://blog.fontra.xyz/blog/opentype-harfbuzz/fontra-mark-anchors.mp4&quot; controls=&quot;controls&quot; loop=&quot;&quot; muted=&quot;&quot;&gt;&lt;/video&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Note: we are &lt;strong&gt;not&lt;/strong&gt; talking about pre-combined diacritics here. That&#39;s a different topic, to be tackled some other time.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&quot;cursive-positioning&quot;&gt;Cursive positioning&lt;/h3&gt;
+&lt;p&gt;With the &lt;a href=&quot;https://learn.microsoft.com/en-us/typography/opentype/spec/features_ae#curs&quot;&gt;cursive positioning feature&lt;/a&gt; (&lt;code&gt;curs&lt;/code&gt;), we can attach adjacent glyphs by using appropriately named anchors. There are “entry” anchors, that must be named (or prefixed with) &lt;code&gt;entry&lt;/code&gt;, and “exit” anchors that must be named (or prefixed with) &lt;code&gt;exit&lt;/code&gt;. If a glyph containing an &lt;code&gt;exit&lt;/code&gt; anchor is followed by a glyph with an &lt;code&gt;entry&lt;/code&gt; anchor, the glyphs will be positioned so that the two anchors coincide. The anchor naming follows the writing direction, but it is visually the right hand glyph that will be repositioned according to the anchors.&lt;/p&gt;
+&lt;p&gt;&lt;video src=&quot;https://blog.fontra.xyz/blog/opentype-harfbuzz/fontra-curs-emulation.mp4&quot; controls=&quot;controls&quot; loop=&quot;&quot; muted=&quot;&quot;&gt;&lt;/video&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Falak OTL by Lara Captan (alpha version)&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&quot;feature-code&quot;&gt;Feature code&lt;/h3&gt;
+&lt;p&gt;Fontra has had an OpenType feature code editor for a while now. But apart from editing the feature code, it didn&#39;t do much. With the current update, the feature code is compiled on the fly, and the result can be &lt;em&gt;observed immediately&lt;/em&gt; in the editor view. It will also instantly show errors and warnings.&lt;/p&gt;
+&lt;p&gt;&lt;video src=&quot;https://blog.fontra.xyz/blog/opentype-harfbuzz/fontra-opentype-fea-code.mp4&quot; controls=&quot;controls&quot; loop=&quot;&quot; muted=&quot;&quot;&gt;&lt;/video&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If you are new to OpenType feature programming, these are useful resources:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://opentypecookbook.com/&quot;&gt;The OpenType Cookbook&lt;/a&gt; by Tal Leming&lt;/li&gt;
+&lt;li&gt;Adobe&#39;s &lt;a href=&quot;https://adobe-type-tools.github.io/afdko/OpenTypeFeatureFileSpecification.html&quot;&gt;OpenType Feature File Specification&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;feature-code-with-insertion-markers&quot;&gt;Feature code with insertion markers&lt;/h3&gt;
+&lt;p&gt;Sometimes you need to control where generated GPOS features need to be applied, for example if other hand-written features need to be applied &lt;em&gt;after&lt;/em&gt; the generated features. This can be done with a so called &amp;quot;insertion marker&amp;quot;, which is a comment: &lt;code&gt;# Automatic Code&lt;/code&gt;, to be used like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;feature kern {
+  # Automatic Code
+ } kern;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A feature block with in insertion marker can also contain feature code, in which case it will work together with the generated feature.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;feature kern {
+  # Automatic Code
+  # Add to the generated or emulated kerning:
+  pos T comma&#39; parenright 50;
+ } kern;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If the feature code contains a &lt;code&gt;kern&lt;/code&gt; feature block (or &lt;code&gt;curs&lt;/code&gt;, &lt;code&gt;mark&lt;/code&gt;, &lt;code&gt;mkmk&lt;/code&gt;) &lt;em&gt;without&lt;/em&gt; an insertion marker, that feature will &lt;em&gt;not&lt;/em&gt; be generated, and emulation will be off by default.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;feature kern {
+  # This is a manually written `kern` feature *without* an
+  # insertion marker. No kerning feature will be generated
+  # from the font&#39;s kerning data on export
+  pos A V -50;
+ } kern;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;behind-the-scenes&quot;&gt;Behind the scenes&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://xkcd.com/2501/&quot;&gt;&lt;em&gt;(Warning: this section is getting a little bit technical!)&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;!-- &lt;img src=&quot;https://imgs.xkcd.com/comics/average_familiarity.png&quot; alt=&quot;Average Familiarity, an XKCD comic&quot;&gt; --&gt;
+&lt;p&gt;Implementing all this behavior was quite a challenge. Luckily I got help from the amazing &lt;a href=&quot;https://khaledhosny.com/&quot;&gt;Khaled Hosny&lt;/a&gt;, who contributed several key bits of functionality.&lt;/p&gt;
+&lt;p&gt;I mentioned HarfBuzz, the text shaping library that&#39;s at the heart of turning text into a glyph sequence that is ready to render. Fontra uses &lt;a href=&quot;https://github.com/harfbuzz/harfbuzzjs&quot;&gt;HarfBuzzJS&lt;/a&gt;, which is a version of HarfBuzz that runs in the browser. It uses the original &lt;code&gt;C++&lt;/code&gt; codebase, and makes it work in the browser with &lt;code&gt;WebAssembly&lt;/code&gt;. It contains a thin Javascript layer that exposes the functionality to web applications.&lt;/p&gt;
+&lt;p&gt;HarfBuzz has many powerful “hooks” that applications can use to customize behavior. Fontra uses these mechanism to provide HarfBuzz with “live” data, such as glyph metrics and character to glyph mapping. Not all of these HarfBuzz features were yet available in HarfBuzzJS, but Khaled patiently added everything that was needed.&lt;/p&gt;
+&lt;h3 id=&quot;shaper-font&quot;&gt;Shaper font&lt;/h3&gt;
+&lt;p&gt;While for &lt;code&gt;.ttf&lt;/code&gt; or &lt;code&gt;.otf&lt;/code&gt; we can feed HarfBuzz the original font data, for source data I needed to come up with something clever.&lt;/p&gt;
+&lt;p&gt;Compiling an actual font from the source data is potentially very slow for Fontra, as by design it doesn&#39;t load all glyphs into memory. Fontra can &lt;em&gt;also&lt;/em&gt; run as a true web application, where glyph data is loaded on-demand from a remote server. As an additional constraint, Fontra supports large glyph sets (for example for East Asian fonts). Compiling a full font in real-time is just not a viable option.&lt;/p&gt;
+&lt;p&gt;The good news is that HarfBuzz does not &lt;em&gt;need&lt;/em&gt; a full font: it only needs the key layout tables (such as &lt;code&gt;GSUB&lt;/code&gt;, &lt;code&gt;GPOS&lt;/code&gt; and &lt;code&gt;GDEF&lt;/code&gt;). Crucially, &lt;em&gt;it does not need any outlines&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;So that&#39;s what we&#39;ll do: build a minimal font that contains &lt;em&gt;just&lt;/em&gt; enough information so HarfBuzz to can do its work. I call such a font a “shaper font”.&lt;/p&gt;
+&lt;p&gt;I had used this concept in FontGoggles before, but Fontra&#39;s use-case adds an additional challenge: can we improve this idea so that we can edit kerning and glyph anchors interactively, while still getting the exact same behavior &lt;em&gt;as if&lt;/em&gt; the font were fully compiled? Can we achieve this &lt;em&gt;without&lt;/em&gt; recompiling the shaper font?&lt;/p&gt;
+&lt;p&gt;I wrote code that emulates kerning, mark positioning and cursive features on the fly, and integrated this with the HarfBuzz processing sequence so that this emulation can work seamlessly with hand-written feature code.&lt;/p&gt;
+&lt;p&gt;There was just one piece missing: how to efficiently build a “shaper font”, in the browser. I wrote a little prototype in Python using &lt;code&gt;fontTools.feaLib&lt;/code&gt;, but the parts to build something much better and faster were already out there, at the &lt;a href=&quot;https://github.com/googlefonts/fontc&quot;&gt;fontc&lt;/a&gt; project by Google Fonts. The &lt;code&gt;fontc&lt;/code&gt; font compiler is aiming to become a &lt;code&gt;fontmake&lt;/code&gt; successor, written in the Rust programming language.&lt;/p&gt;
+&lt;h3 id=&quot;the-build-shaper-font-project&quot;&gt;The “build-shaper-font” project&lt;/h3&gt;
+&lt;p&gt;Khaled and I discussed the options, and we agreed that he would write a small new library in Rust, using key parts from the &lt;code&gt;fontc&lt;/code&gt; project. It would be deployed as WebAssembly so it can be run in the browser. This became &lt;a href=&quot;https://github.com/fontra/build-shaper-font&quot;&gt;&lt;code&gt;build-shaper-font&lt;/code&gt;&lt;/a&gt;, also available on &lt;a href=&quot;https://www.npmjs.com/package/build-shaper-font&quot;&gt;npm&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It has a very minimal API: it export a single function called &lt;code&gt;buildShaperFont()&lt;/code&gt; which takes these arguments:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;unitsPerEm&lt;/code&gt;, the number of “units per em”&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;glyphOrder&lt;/code&gt;, a list of glyph names&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;featureSource&lt;/code&gt;, the text of the feature code&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;axes&lt;/code&gt;, a list of axis information for variable features&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;glyphClasses&lt;/code&gt;, glyph class information to construct a &lt;code&gt;GDEF&lt;/code&gt; table&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;Note that it does not receive any glyph data, encoding data, or metrics.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;It returns the compiled shaper font data, error and warning messages, and “insert markers” information.&lt;/p&gt;
+&lt;p&gt;The “insert markers” data correspond to &lt;code&gt;# Automatic Code&lt;/code&gt; comments in the feature code, and tells us before which &lt;code&gt;GPOS&lt;/code&gt; lookups the emulated features should be applied. This allows us to make the font behave exactly the same as a fully compiled font.&lt;/p&gt;
+&lt;h2 id=&quot;concluding&quot;&gt;Concluding&lt;/h2&gt;
+&lt;p&gt;So there you have it: a fast, interactive, high-fidelity text rendering pipeline from font source data. It is so far working extremely well, and I am beyond proud of what Khaled and I have made.&lt;/p&gt;
+&lt;p&gt;I would like to take this moment to thank Google Fonts, Dave Crossland, The Font Bureau and David Berlow for supporting me and Khaled to build this exciting new Fontra functionality.&lt;/p&gt;
+&lt;h2 id=&quot;next-up&quot;&gt;Next up&lt;/h2&gt;
+&lt;p&gt;There is always more to do... In the context of the new OpenType support, there are some followup items:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Support text segmenting (so HarfBuzz can apply the correct features to text runs in different scripts)&lt;/li&gt;
+&lt;li&gt;Support &lt;a href=&quot;https://en.wikipedia.org/wiki/Bidirectional_text&quot;&gt;bidirectional text&lt;/a&gt;, so we can mix left-to-right and right-to-left text runs correctly&lt;/li&gt;
+&lt;li&gt;Support vertical text layout&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Outside of OpenType functionality, these are the next high-priority features:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Add scripting capabilities&lt;/li&gt;
+&lt;li&gt;Add proper plugins infrastructure&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;As usual, please follow Fontra, and keep in touch with us via any of these channels:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://typo.social/@fontra&quot;&gt;Mastodon&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://discord.gg/SeZWugEYzd&quot;&gt;Discord&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/fontra&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.instagram.com/fontra_editor&quot;&gt;Instagram&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;— Just van Rossum&lt;/em&gt;&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Fontra in 2026, let&#39;s go!</title>
     <link href="https://blog.fontra.xyz/blog/2026-lets-go/" />

@@ -180,14 +180,17 @@ pre[class*="language-diff-"] {
 /* Defaults */
 :root {
 	--font-family: InriaSans, system-ui, sans-serif;
-	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono,
+		Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono,
+		Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New,
+		Courier, monospace;
 	--inria-bold: 650;
 }
 
 /* Theme colors */
 :root {
 	--color-gray-20: #e0e0e0;
-	--color-gray-50: #C0C0C0;
+	--color-gray-50: #c0c0c0;
 	--color-gray-90: #333;
 
 	--background-color: #fff;
@@ -195,7 +198,7 @@ pre[class*="language-diff-"] {
 	--text-color: var(--color-gray-90);
 	--text-color-link: #082840;
 	--text-color-link-active: #5f2b48;
-	--text-color-link-visited: #17050F;
+	--text-color-link-visited: #17050f;
 
 	--syntax-tab-size: 2;
 }
@@ -203,7 +206,7 @@ pre[class*="language-diff-"] {
 @media (prefers-color-scheme: dark) {
 	:root {
 		--color-gray-20: #e0e0e0;
-		--color-gray-50: #C0C0C0;
+		--color-gray-50: #c0c0c0;
 		--color-gray-90: #dad8d8;
 
 		/* --text-color is assigned to --color-gray-_ above */
@@ -218,9 +221,9 @@ pre[class*="language-diff-"] {
 /* Fontra Blog fonts */
 
 @font-face {
-  font-family: "InriaSans";
-  src: url("/fonts/InriaSans-VF.woff2") format("woff2");
-  font-weight: 300 800;
+	font-family: "InriaSans";
+	src: url("/fonts/InriaSans-VF.woff2") format("woff2");
+	font-weight: 300 800;
 }
 
 @font-face {
@@ -266,16 +269,16 @@ body {
 }
 
 /* Fluid images via https://www.zachleat.com/web/fluid-images/ */
-img{
-  max-width: 100%;
+img {
+	max-width: 100%;
 }
 img[width][height] {
-  height: auto;
+	height: auto;
 }
 img[src$=".svg"] {
-  width: 100%;
-  height: auto;
-  max-width: none;
+	width: 100%;
+	height: auto;
+	max-width: none;
 }
 video,
 iframe {
@@ -328,7 +331,7 @@ header:after {
 .links-nextprev {
 	display: flex;
 	justify-content: space-between;
-	gap: .5em 1em;
+	gap: 0.5em 1em;
 	list-style: "";
 	border-top: 1px dashed var(--color-gray-20);
 	padding: 1em 0;
@@ -353,7 +356,7 @@ code {
 	font-family: var(--font-family-monospace);
 }
 pre:not([class*="language-"]) {
-	margin: .5em 0;
+	margin: 0.5em 0;
 	line-height: 1.375; /* 22px /16 */
 	-moz-tab-size: var(--syntax-tab-size);
 	-o-tab-size: var(--syntax-tab-size);
@@ -379,7 +382,7 @@ code {
 /* Header */
 header {
 	display: flex;
-	gap: 1em .5em;
+	gap: 1em 0.5em;
 	flex-wrap: wrap;
 	align-items: center;
 	padding: 1em;
@@ -444,8 +447,8 @@ header {
 	font-size: 1.1875em; /* 19px /16 */
 	font-weight: var(--inria-bold);
 	flex-basis: calc(100% - 1.5rem);
-	padding-left: .25em;
-	padding-right: .5em;
+	padding-left: 0.25em;
+	padding-right: 0.5em;
 	text-underline-position: from-font;
 	text-underline-offset: 0;
 	text-decoration-thickness: 1px;
@@ -470,7 +473,7 @@ header {
 .post-metadata {
 	display: inline-flex;
 	flex-wrap: wrap;
-	gap: .5em;
+	gap: 0.5em;
 	list-style: none;
 	padding: 0;
 	margin: 0;
@@ -485,7 +488,20 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: var(--inria-bold);
+	font-weight: var(--inria-bold);
+}
+
+blockquote,
+pre {
+	margin: 0;
+	padding: 1em;
+	background-color: #aaa2;
+	border-radius: 0.4em;
+}
+
+pre > code {
+	background-color: unset;
+	font-size: 0.85em;
 }</style>
 	</head>
 	<body>
@@ -514,9 +530,9 @@ h6 {
 <ul class="post-metadata">
 	<li><time datetime="2025-08-25">25 August 2025</time></li>
 	<li><a href="/tags/fontra/" class="post-tag">fontra</a>, </li>
-	<li><a href="/tags/linux/" class="post-tag"> linux</a>, </li>
-	<li><a href="/tags/snap/" class="post-tag"> snap</a>, </li>
-	<li><a href="/tags/flatpak/" class="post-tag"> flatpak</a></li>
+	<li><a href="/tags/linux/" class="post-tag">linux</a>, </li>
+	<li><a href="/tags/snap/" class="post-tag">snap</a>, </li>
+	<li><a href="/tags/flatpak/" class="post-tag">flatpak</a></li>
 </ul>
 
 <p>This is an invited guest blog post by <a href="https://github.com/mitradranirban">Dr. Anirban Mitra</a>.</p>
@@ -634,7 +650,7 @@ chmod +x fontrapak
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.1.2</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/linux-support/` was built on 2026-01-15T10:18:13.096Z -->
+		<!-- This page `/blog/linux-support/` was built on 2026-03-06T15:43:09.832Z -->
 		<script type="module" src="/dist/cC8wS6ZjFU.js"></script>
 	</body>
 </html>

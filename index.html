@@ -8,19 +8,22 @@
 		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Fontra Blog">
 		<link rel="me" href="https://typo.social/@fontra">
 		
-		<style>.postlist { counter-reset: start-from 7 }
+		<style>.postlist { counter-reset: start-from 8 }
 /* This is an arbitrary CSS string added to the bundle */
 /* Defaults */
 :root {
 	--font-family: InriaSans, system-ui, sans-serif;
-	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono,
+		Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono,
+		Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New,
+		Courier, monospace;
 	--inria-bold: 650;
 }
 
 /* Theme colors */
 :root {
 	--color-gray-20: #e0e0e0;
-	--color-gray-50: #C0C0C0;
+	--color-gray-50: #c0c0c0;
 	--color-gray-90: #333;
 
 	--background-color: #fff;
@@ -28,7 +31,7 @@
 	--text-color: var(--color-gray-90);
 	--text-color-link: #082840;
 	--text-color-link-active: #5f2b48;
-	--text-color-link-visited: #17050F;
+	--text-color-link-visited: #17050f;
 
 	--syntax-tab-size: 2;
 }
@@ -36,7 +39,7 @@
 @media (prefers-color-scheme: dark) {
 	:root {
 		--color-gray-20: #e0e0e0;
-		--color-gray-50: #C0C0C0;
+		--color-gray-50: #c0c0c0;
 		--color-gray-90: #dad8d8;
 
 		/* --text-color is assigned to --color-gray-_ above */
@@ -51,9 +54,9 @@
 /* Fontra Blog fonts */
 
 @font-face {
-  font-family: "InriaSans";
-  src: url("/fonts/InriaSans-VF.woff2") format("woff2");
-  font-weight: 300 800;
+	font-family: "InriaSans";
+	src: url("/fonts/InriaSans-VF.woff2") format("woff2");
+	font-weight: 300 800;
 }
 
 @font-face {
@@ -99,16 +102,16 @@ body {
 }
 
 /* Fluid images via https://www.zachleat.com/web/fluid-images/ */
-img{
-  max-width: 100%;
+img {
+	max-width: 100%;
 }
 img[width][height] {
-  height: auto;
+	height: auto;
 }
 img[src$=".svg"] {
-  width: 100%;
-  height: auto;
-  max-width: none;
+	width: 100%;
+	height: auto;
+	max-width: none;
 }
 video,
 iframe {
@@ -161,7 +164,7 @@ header:after {
 .links-nextprev {
 	display: flex;
 	justify-content: space-between;
-	gap: .5em 1em;
+	gap: 0.5em 1em;
 	list-style: "";
 	border-top: 1px dashed var(--color-gray-20);
 	padding: 1em 0;
@@ -186,7 +189,7 @@ code {
 	font-family: var(--font-family-monospace);
 }
 pre:not([class*="language-"]) {
-	margin: .5em 0;
+	margin: 0.5em 0;
 	line-height: 1.375; /* 22px /16 */
 	-moz-tab-size: var(--syntax-tab-size);
 	-o-tab-size: var(--syntax-tab-size);
@@ -212,7 +215,7 @@ code {
 /* Header */
 header {
 	display: flex;
-	gap: 1em .5em;
+	gap: 1em 0.5em;
 	flex-wrap: wrap;
 	align-items: center;
 	padding: 1em;
@@ -277,8 +280,8 @@ header {
 	font-size: 1.1875em; /* 19px /16 */
 	font-weight: var(--inria-bold);
 	flex-basis: calc(100% - 1.5rem);
-	padding-left: .25em;
-	padding-right: .5em;
+	padding-left: 0.25em;
+	padding-right: 0.5em;
 	text-underline-position: from-font;
 	text-underline-offset: 0;
 	text-decoration-thickness: 1px;
@@ -303,7 +306,7 @@ header {
 .post-metadata {
 	display: inline-flex;
 	flex-wrap: wrap;
-	gap: .5em;
+	gap: 0.5em;
 	list-style: none;
 	padding: 0;
 	margin: 0;
@@ -318,7 +321,20 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: var(--inria-bold);
+	font-weight: var(--inria-bold);
+}
+
+blockquote,
+pre {
+	margin: 0;
+	padding: 1em;
+	background-color: #aaa2;
+	border-radius: 0.4em;
+}
+
+pre > code {
+	background-color: unset;
+	font-size: 0.85em;
 }</style>
 	</head>
 	<body>
@@ -344,12 +360,16 @@ h6 {
 				
 
 
-<h1 id="latest-6-posts">Latest 6 Posts</h1>
+<h1 id="latest-7-posts">Latest 7 Posts</h1>
 
 
 
 
 <ol reversed="" class="postlist">
+	<li class="postlist-item">
+		<a href="/blog/opentype-harfbuzz/" class="postlist-link">Text shaping and OpenType features</a>
+		<time class="postlist-date" datetime="2026-03-06">March 2026</time>
+	</li>
 	<li class="postlist-item">
 		<a href="/blog/2026-lets-go/" class="postlist-link">Fontra in 2026, let&#39;s go!</a>
 		<time class="postlist-date" datetime="2026-01-15">January 2026</time>
@@ -391,7 +411,7 @@ h6 {
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.1.2</a></em></p>
 		</footer>
 
-		<!-- This page `/` was built on 2026-01-15T10:18:13.094Z -->
+		<!-- This page `/` was built on 2026-03-06T15:43:09.830Z -->
 		<script type="module" src="/dist/cC8wS6ZjFU.js"></script>
 	</body>
 </html>
