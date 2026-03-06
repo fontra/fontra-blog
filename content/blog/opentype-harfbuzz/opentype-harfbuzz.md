@@ -88,7 +88,7 @@ Each will pop up a character/glyph selection dialog.
 
 ### Double-clicking in the output glyphs list
 
-When you double-click on a glyph in the output glyphs list, the glyph will be put in edit mode in the canvas. If the glyph does not exist, a dialog will ask you whether you want to create the glyph.
+When you double-click on a glyph in the output glyphs list, the glyph will be put in edit mode in the canvas. If the glyph does not exist, a dialog will ask you whether you want to create it.
 
 ## Live OpenType features
 
