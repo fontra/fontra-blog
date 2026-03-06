@@ -227,11 +227,11 @@ Outside of OpenType functionality, these are the next high-priority features:
 - Add scripting capabilities
 - Add proper plugins infrastructure
 
-As usual, please follow Fontra, and keep in touch with us via any of these channels:
-
-- [Mastodon](https://typo.social/@fontra)
-- [Discord](https://discord.gg/SeZWugEYzd)
-- [GitHub](https://github.com/fontra)
-- [Instagram](https://www.instagram.com/fontra_editor)
+> As usual, please follow Fontra, and keep in touch with us via any of these channels:
+>
+> - [Mastodon](https://typo.social/@fontra)
+> - [Discord](https://discord.gg/SeZWugEYzd)
+> - [GitHub](https://github.com/fontra)
+> - [Instagram](https://www.instagram.com/fontra_editor)
 
 *— Just van Rossum*
