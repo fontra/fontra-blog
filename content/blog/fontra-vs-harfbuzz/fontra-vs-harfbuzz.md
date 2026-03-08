@@ -18,7 +18,7 @@ Sometimes one wants to add some other feature code before or after the generated
 
 The contextual rules have to be applied after the generated mark positioning rules, since mark positioning is not cumulative (unlike kerning), and if it got applied after the contextual positioning lookup, it will override it.
 
-Here the default position of the dot (the rectangular stroke) of the _jeem_ clashes with the _hah_ underneath. We could have move the dot further right by default, but this would made it off center in situations where there is no clash, which is not desired:
+Here, the default position of the dot (the rectangular stroke) of the _jeem_ clashes with the _hah_ underneath. We could have moved the dot further right by default, but this would have made it off center in situations where there is no clash, which is not desired:
 ![](without-manual-code.png)
 
 The more desired solution is to contextually move the dots to the left (and slightly down, to align with the _hah_):
