@@ -38,6 +38,6 @@ Here comes the neat trick: Fontra registers a message callback function, which H
 
 Then HarfBuzz will proceed to apply later lookups, which will modify the glyph positions (if applicable) as it would have happened with a fully compiled font.
 
-Oay, this is a super nerdy topic and maybe very few people get why I’m so excited about it, but I’m really proud of it.
+Okay, this is a super nerdy topic and maybe very few people get why I’m so excited about it, but I’m really proud of it.
 
 *— Khaled Hosny*
