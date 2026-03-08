@@ -21,7 +21,7 @@ The contextual rules have to be applied after the generated mark positioning rul
 Here, the default position of the dot (the rectangular stroke) of the _jeem_ clashes with the _hah_ underneath. We could have moved the dot further right by default, but this would have made it off center in situations where there is no clash, which is not desired:
 ![](without-manual-code.png)
 
-The more desired solution is to contextually move the dots to the left (and slightly down, to align with the _hah_):
+The more desired solution is to contextually move the dot to the right (and slightly down, to align with the _hah_):
 ![](with-manual-code.png)
 
 To control the order of the lookup between the generated code and the manually written one, we use a special comment (as explained in the blog post).
