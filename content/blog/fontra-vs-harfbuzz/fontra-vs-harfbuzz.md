@@ -24,7 +24,7 @@ Here, the default position of the dot (the rectangular stroke) of the _jeem_ cla
 The more desired solution is to contextually move the dot to the right (and slightly down, to align with the _hah_):
 ![](with-manual-code.png)
 
-To control the order of the lookup between the generated code and the manually written one, we use a special comment (as explained in the blog post).
+To control the order of the lookups between the generated code and the manually written one, we add a special comment in the feature code to indicate where the generated code will be inserted (as explained in the blog post).
 
 However, Fontra does not generate positioning feature code during live preview, as it does the glyph positioning itself, while the rest of the shaping is done by HarfBuzz (as also explained in the blog post).
 
