@@ -14,7 +14,7 @@ The technical part at the end is the most interesting to me. I’m particularly 
 
 For context, font editors will generate positioning features from kerning and anchor data in the font.
 
-Sometimes one wants to add some other feature code before or after the generated one. For example, in Arabic fonts dots can be handled as separate mark glyphs that are positioned using regular anchors, and sometimes the dots clash with neighboring glyphs, and to fix that we may contextually move the dot around to fix the clash (instead of resorting to less desired solutions like changing the spacing of the base glyphs). One solution to achieve that, is to write contextual glyph positioning rules that applies these movements.
+Sometimes one wants to add some other feature code before or after the generated one. For example, in Arabic fonts dots can be handled as separate mark glyphs that are positioned using regular anchors, and sometimes the dots clash with neighboring glyphs, and to fix that we may contextually move the dots around to fix the clash (instead of resorting to less desired solutions like changing the spacing of the base glyphs). One way to achieve that, is by writing contextual glyph positioning rules that applies these movements.
 
 The contextual rules have to be applied after the generated mark positioning rules, since mark positioning is not cumulative (unlike kerning), and if it got applied after the contextual positioning lookup, it will override it.
 
