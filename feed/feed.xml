@@ -5,11 +5,38 @@
   <subtitle>Posting about Fontra development.</subtitle>
   <link href="https://blog.fontra.xyz/feed/feed.xml" rel="self" />
   <link href="https://blog.fontra.xyz/" />
-  <updated>2026-03-06T00:00:00Z</updated>
+  <updated>2026-03-08T00:00:00Z</updated>
   <id>https://blog.fontra.xyz/</id>
   <author>
     <name>Fontra Team</name>
   </author>
+  <entry>
+    <title>How Fontra and HarfBuzz interact</title>
+    <link href="https://blog.fontra.xyz/blog/fontra-vs-harfbuzz/" />
+    <updated>2026-03-08T00:00:00Z</updated>
+    <id>https://blog.fontra.xyz/blog/fontra-vs-harfbuzz/</id>
+    <content type="html">&lt;p&gt;&lt;em&gt;This is a guest blog post by Khaled Hosny, adapted from &lt;a href=&quot;https://typo.social/@khaled/116188327472519982&quot;&gt;a post on Mastodon&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The previous &lt;a href=&quot;https://blog.fontra.xyz/blog/opentype-harfbuzz/&quot;&gt;blog post&lt;/a&gt; about Text shaping and OpenType features is a very interesting write-up, and I suggest everyone interested in font making to read it.&lt;/p&gt;
+&lt;p&gt;The technical part at the end is the most interesting to me. I’m particularly proud of the very neat trick that allows Fontra to emulate glyph positioning while maintaining interaction between it and manually written feature code.&lt;/p&gt;
+&lt;h3 id=&quot;generated-features-vs-emulation&quot;&gt;Generated features vs. emulation&lt;/h3&gt;
+&lt;p&gt;For context, font editors will generate positioning features from kerning and anchor data in the font.&lt;/p&gt;
+&lt;p&gt;Sometimes one wants to add some other feature code before or after the generated one. For example, in Arabic fonts dots can be handled as separate mark glyphs that are positioned using regular anchors, and sometimes the dots clash with neighboring glyphs, and to fix that we may contextually move the dots around to fix the clash (instead of resorting to less desired solutions like changing the spacing of the base glyphs). One way to achieve that, is by writing contextual glyph positioning rules that apply these movements.&lt;/p&gt;
+&lt;p&gt;The contextual rules have to be applied after the generated mark positioning rules, since mark positioning is not cumulative (unlike kerning), and if it got applied after the contextual positioning lookup, it will override it.&lt;/p&gt;
+&lt;p&gt;Here, the default position of the dot (the rectangular stroke) of the &lt;em&gt;jeem&lt;/em&gt; clashes with the &lt;em&gt;hah&lt;/em&gt; underneath. We could have moved the dot further right by default, but this would have made it off center in situations where there is no clash, which is not desired:
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://blog.fontra.xyz/blog/fontra-vs-harfbuzz/GcZH9f3dvo-3248.avif 3248w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://blog.fontra.xyz/blog/fontra-vs-harfbuzz/GcZH9f3dvo-3248.webp 3248w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://blog.fontra.xyz/blog/fontra-vs-harfbuzz/GcZH9f3dvo-3248.png&quot; alt=&quot;&quot; width=&quot;3248&quot; height=&quot;2112&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;The more desired solution is to contextually move the dot to the right (and slightly down, to align with the &lt;em&gt;hah&lt;/em&gt;):
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://blog.fontra.xyz/blog/fontra-vs-harfbuzz/34nCKkCO58-3248.avif 3248w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://blog.fontra.xyz/blog/fontra-vs-harfbuzz/34nCKkCO58-3248.webp 3248w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://blog.fontra.xyz/blog/fontra-vs-harfbuzz/34nCKkCO58-3248.png&quot; alt=&quot;&quot; width=&quot;3248&quot; height=&quot;2112&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;To control the order of the lookups between the generated code and the manually written one, we add a special comment in the feature code to indicate where the generated code will be inserted (as explained in the blog post).&lt;/p&gt;
+&lt;p&gt;However, Fontra does not generate positioning feature code during live preview, as it does the glyph positioning itself, while the rest of the shaping is done by HarfBuzz (as also explained in the blog post).&lt;/p&gt;
+&lt;h3 id=&quot;making-harfbuzz-call-fontra&quot;&gt;Making HarfBuzz call Fontra&lt;/h3&gt;
+&lt;p&gt;So how would it do this emulation in the middle of lookup application by HarfBuzz?&lt;/p&gt;
+&lt;p&gt;HarfBuzz has a so-called “message” callback that allows the caller to get a message about what HarfBuzz is doing and the HarfBuzz glyph buffer before and after each shaping step (this is what &lt;a href=&quot;https://www.corvelsoftware.co.uk/crowbar/&quot;&gt;Crowbar&lt;/a&gt; uses to show OpenType layout processing step by step).&lt;/p&gt;
+&lt;p&gt;Here comes the neat trick: Fontra registers a message callback function, which HarfBuzz calls before and after each lookup is applied, and whenever HarfBuzz is about to apply a lookup that the generated code would have been inserted before, Fontra steps in and modifies the glyph buffer to apply its own positioning logic. So it is af if Fontra is creating and applying lookups on the fly, while not actually creating any.&lt;/p&gt;
+&lt;p&gt;Then HarfBuzz will proceed to apply later lookups, which will modify the glyph positions (if applicable) as it would have happened with a fully compiled font.&lt;/p&gt;
+&lt;p&gt;Okay, this is a super nerdy topic and maybe very few people get why I’m so excited about it, but I’m really proud of it.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;— Khaled Hosny&lt;/em&gt;&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Text shaping and OpenType features</title>
     <link href="https://blog.fontra.xyz/blog/opentype-harfbuzz/" />

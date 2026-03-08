@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Welcome to the Fontra blog! A brief history of the project.</title>
-		<meta name="description" content="A brief history of the project">
+		<title>How Fontra and HarfBuzz interact</title>
+		<meta name="description" content="A guest post by Khaled Hosny about how Fontra and HarfBuzz interact with each other">
 		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Fontra Blog">
 		<link rel="me" href="https://typo.social/@fontra">
 		
@@ -525,54 +525,37 @@ pre > code {
 		<main id="skip">
 			<heading-anchors>
 				
-<h1 id="welcome-to-the-fontra-blog-a-brief-history-of-the-project">Welcome to the Fontra blog! A brief history of the project.</h1>
+<h1 id="how-fontra-and-harfbuzz-interact">How Fontra and HarfBuzz interact</h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2025-01-29">29 January 2025</time></li>
-	<li><a href="/tags/fontra/" class="post-tag">fontra</a></li>
+	<li><time datetime="2026-03-08">08 March 2026</time></li>
+	<li><a href="/tags/fontra/" class="post-tag">fontra</a>, </li>
+	<li><a href="/tags/opentype/" class="post-tag">OpenType</a>, </li>
+	<li><a href="/tags/harfbuzz/" class="post-tag">HarfBuzz</a></li>
 </ul>
 
-<p>It was long overdue, but here it is – a blog dedicated to Fontra. We will write about new features, work in progress, and future plans. But first: let's recap what happened previously, and summarize the current state of Fontra.</p>
-<p>We have come a long way, and it has been quite the trip already. The first commit to git was done on 14 November 2021. The initial name for the project was &quot;Trafo&quot;, but on the second day everything got renamed to &quot;Fontra&quot;, after our colleague Fabio Caccamo suggested it.</p>
-<p>Fontra started as a proof of concept. We needed fast live interpolation of (deeply) nested variable components, good support for large character sets (tens of thousands glyphs), and low friction collaboration within a medium-sized (up to 15 designers simultaneously) team. These requirements were informed by ongoing custom CJK (Chinese, Japanese, Korean) type-designs at Black Foundry. We needed new tools for this, and we considered these three options:</p>
-<ul>
-<li>A new extension for RoboFont (a faster successor to our RoboCJK extension)</li>
-<li>A new cross-platform desktop application (using Qt or wxWidgets)</li>
-<li>A web application + custom server</li>
-</ul>
-<p>We were already using a server with a SQL database to enable smooth collaboration of the team on large scale (CJK) projects), coupled with a RoboFont extension for glyph editing.
-A cross-platform solution was to be preferred, and indeed web-browsers are by definition cross-platform, why not build on top of that!</p>
-<p>OpenType 1.8 (2016) brought the Variable Font format to the real world, and type-designers had been drawing with several masters (or sources) for a while already: it seemed important to us that the font editor would take these multiple-masters considerations from its very foundations. In other words: we envisioned a  &quot;variable first&quot; approach to font editing.</p>
-<p>Some informal trials with JavaScript, HTML and CSS quickly had very positive results – both in terms of potential performance, as well as in developer experience. JavaScript has come a long way since the nineties! Additionally, modern web standards are very powerful and remarkably easy to use. It seemed like a solid choice. Just van Rossum’s long experience with coding in the realm of typography (TTX,  FontTools, FontGoggles) helped to develop a vision and architecture for a new, browser-based font editor, even though he had to learn new skills for the web platform.</p>
-<p>We went from cautious first experimental steps to &quot;proper&quot; development rather quickly, since every step along the way confirmed that we were on the right track to achieve our goals.</p>
-<h3 id="where-are-we-now">Where are we now?</h3>
-<p>In early 2025, Fontra is a near-feature-complete font editor.</p>
-<p>Highlights include:</p>
-<ul>
-<li>Create fonts from scratch</li>
-<li>Read and write various font source formats</li>
-<li>Read various binary font formats</li>
-<li>Export (variable) TrueType and OpenType</li>
-<li>Add/delete glyphs</li>
-<li>Draw/modify glyphs</li>
-<li>Strong support for (variable) components</li>
-<li>Live interpolation</li>
-<li>Edit the font's designspace (variation axes, etc.)</li>
-<li>Perform glyph edits across multiple sources (masters) simultaneously</li>
-<li>A font overview with support for preset and custom glyph sets, powerful grouping options</li>
-<li>Server to collaborate with a team online</li>
-</ul>
-<p>Some stats from our main repository on GitHub:</p>
-<ul>
-<li>541 stars</li>
-<li>17 contributors</li>
-<li>10k+ commits</li>
-<li>1147 closed pull requests</li>
-<li>614 closed issues</li>
-</ul>
-<p>We still have important work left to do, and in this blog we will regularly keep you up to date with the latest developments. Please follow along with our mission to make Fontra an excellent font editor!</p>
+<p><em>This is a guest blog post by Khaled Hosny, adapted from <a href="https://typo.social/@khaled/116188327472519982">a post on Mastodon</a></em></p>
+<p>The previous <a href="https://blog.fontra.xyz/blog/opentype-harfbuzz/">blog post</a> about Text shaping and OpenType features is a very interesting write-up, and I suggest everyone interested in font making to read it.</p>
+<p>The technical part at the end is the most interesting to me. I’m particularly proud of the very neat trick that allows Fontra to emulate glyph positioning while maintaining interaction between it and manually written feature code.</p>
+<h3 id="generated-features-vs-emulation">Generated features vs. emulation</h3>
+<p>For context, font editors will generate positioning features from kerning and anchor data in the font.</p>
+<p>Sometimes one wants to add some other feature code before or after the generated one. For example, in Arabic fonts dots can be handled as separate mark glyphs that are positioned using regular anchors, and sometimes the dots clash with neighboring glyphs, and to fix that we may contextually move the dots around to fix the clash (instead of resorting to less desired solutions like changing the spacing of the base glyphs). One way to achieve that, is by writing contextual glyph positioning rules that apply these movements.</p>
+<p>The contextual rules have to be applied after the generated mark positioning rules, since mark positioning is not cumulative (unlike kerning), and if it got applied after the contextual positioning lookup, it will override it.</p>
+<p>Here, the default position of the dot (the rectangular stroke) of the <em>jeem</em> clashes with the <em>hah</em> underneath. We could have moved the dot further right by default, but this would have made it off center in situations where there is no clash, which is not desired:
+<picture><source type="image/avif" srcset="/blog/fontra-vs-harfbuzz/GcZH9f3dvo-3248.avif 3248w"><source type="image/webp" srcset="/blog/fontra-vs-harfbuzz/GcZH9f3dvo-3248.webp 3248w"><img loading="lazy" decoding="async" src="/blog/fontra-vs-harfbuzz/GcZH9f3dvo-3248.png" alt="" width="3248" height="2112"></picture></p>
+<p>The more desired solution is to contextually move the dot to the right (and slightly down, to align with the <em>hah</em>):
+<picture><source type="image/avif" srcset="/blog/fontra-vs-harfbuzz/34nCKkCO58-3248.avif 3248w"><source type="image/webp" srcset="/blog/fontra-vs-harfbuzz/34nCKkCO58-3248.webp 3248w"><img loading="lazy" decoding="async" src="/blog/fontra-vs-harfbuzz/34nCKkCO58-3248.png" alt="" width="3248" height="2112"></picture></p>
+<p>To control the order of the lookups between the generated code and the manually written one, we add a special comment in the feature code to indicate where the generated code will be inserted (as explained in the blog post).</p>
+<p>However, Fontra does not generate positioning feature code during live preview, as it does the glyph positioning itself, while the rest of the shaping is done by HarfBuzz (as also explained in the blog post).</p>
+<h3 id="making-harfbuzz-call-fontra">Making HarfBuzz call Fontra</h3>
+<p>So how would it do this emulation in the middle of lookup application by HarfBuzz?</p>
+<p>HarfBuzz has a so-called “message” callback that allows the caller to get a message about what HarfBuzz is doing and the HarfBuzz glyph buffer before and after each shaping step (this is what <a href="https://www.corvelsoftware.co.uk/crowbar/">Crowbar</a> uses to show OpenType layout processing step by step).</p>
+<p>Here comes the neat trick: Fontra registers a message callback function, which HarfBuzz calls before and after each lookup is applied, and whenever HarfBuzz is about to apply a lookup that the generated code would have been inserted before, Fontra steps in and modifies the glyph buffer to apply its own positioning logic. So it is af if Fontra is creating and applying lookups on the fly, while not actually creating any.</p>
+<p>Then HarfBuzz will proceed to apply later lookups, which will modify the glyph positions (if applicable) as it would have happened with a fully compiled font.</p>
+<p>Okay, this is a super nerdy topic and maybe very few people get why I’m so excited about it, but I’m really proud of it.</p>
+<p><em>— Khaled Hosny</em></p>
 
-<ul class="links-nextprev"><li class="links-nextprev-next">Next →<br><a href="/blog/font-overview/">Fontra news for January – Font Overview</a></li>
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/opentype-harfbuzz/">Text shaping and OpenType features</a></li>
 </ul>
 
 			</heading-anchors>
@@ -582,7 +565,7 @@ A cross-platform solution was to be preferred, and indeed web-browsers are by de
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.1.2</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/introduction/` was built on 2026-03-08T08:19:30.986Z -->
+		<!-- This page `/blog/fontra-vs-harfbuzz/` was built on 2026-03-08T08:19:30.986Z -->
 		<script type="module" src="/dist/cC8wS6ZjFU.js"></script>
 	</body>
 </html>
