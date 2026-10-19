@@ -18,3 +18,5 @@ So what does Hive add? We are proposing change history at glyph level, every cha
 Fontra Hive starts with a free limited account, and is 9€ (excl. VAT) monthly for a full Solo account; there is also a free 21-day period for every new account, which opens on Monday 19 October 2026. Hive is a payable service since hosting and maintaining such a service online has a cost. However the plug-in itself is still Open Source GPLv3. Fontra embedded in Hive is exactly the same version as the publicly available one, and it is updated on a regular basis. Fontra Hive is an independent product and service provided by U+TYPE.
 
 Try it in the browser: [try.fontrahive.com](https://try.fontrahive.com) and open your account: [fontrahive.com](https://fontrahive.com)
+
+![Ubuntu software fontrapak](./FontraHive.png)
